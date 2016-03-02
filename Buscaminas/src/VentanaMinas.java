@@ -19,7 +19,7 @@ public class VentanaMinas extends JFrame {
 
 	
 	private JPanel contentPane;
-	private Controlador controlador;
+	
 	
 	private final int nivel = 1;
 	private final int filas = 7;
@@ -74,14 +74,18 @@ public class VentanaMinas extends JFrame {
 	}
 	
 	//BOTÓN SMILEY REINICIO
-	private JButton getButton() {
+	private JButton getButton() 
+	{
 		if (buttonSmiley == null) {
 			buttonSmiley = new JButton(":)");
-			buttonSmiley.addMouseListener(new MouseAdapter() {
+			buttonSmiley.addMouseListener(new MouseAdapter() 
+			{
 				@Override
-				public void mouseClicked(MouseEvent e) {
-					/*VentanaMinas nueva = new VentanaMinas();
-					nueva.initialize();*/
+				public void mouseClicked(MouseEvent e) 
+				{
+					VentanaMinas nueva = new VentanaMinas();
+					nueva.initialize();
+					VentanaMinas.this.setVisible(false);
 					
 				}
 			});
@@ -90,12 +94,14 @@ public class VentanaMinas extends JFrame {
 	}
 	
 	
+	//CONSTRUCTOR VENTANAMINAS
 	public VentanaMinas() 
 	{
 	 initialize();
 	}
 	
 	
+	//INICIALIZAR VENTANA
 	private void initialize() 
 	{
 		
@@ -122,11 +128,11 @@ public class VentanaMinas extends JFrame {
 		for(int f = 0; f < filas; f++){
 		      for(int c = 0; c < columnas; c++){
 		      
-		         casillas[f][c]= new Casilla();
+		         casillas[f][c]= new Casilla("num", null);
 		         panelminas.add(casillas[f][c]);
 		         casillas[f][c].setBounds(f*40,c*40,20,20); 
 		         //Medidas de las casillas. A tocar en otro momento
-		         casillas[f][c].addActionListener(getControlador());
+		         casillas[f][c].addActionListener(casillas[f][c].getControlador());
 		         
 		      }
 		}
@@ -137,33 +143,7 @@ public class VentanaMinas extends JFrame {
 	
 	
 	
-	private Controlador getControlador()
-	{
-		if (controlador == null)
-		{
-			controlador = new Controlador();
-		}
-		return controlador;
-	}
 	
-	
-	
-	private class Controlador implements ActionListener 
-	{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			 if((e.getModifiers() & InputEvent.BUTTON1_MASK) == InputEvent.BUTTON1_MASK){
-		            System.out.println("Click con el botón izdo");
-			       //casillas[f][c].setVisible(false); DESCUBRIR CASILLA
-		          //if casilla es no descubierta ya, se puede hacer click. Si no, no!!!
-			 }
-			 if ((e.getModifiers() & InputEvent.BUTTON3_MASK) == InputEvent.BUTTON3_MASK) {
-		            System.out.println("Click con el botón dcho"); }// NO FUNCIONA
-		     
-		
-		}
 
 	private void asignarNumeros() {
 		// TODO Auto-generated method stub
@@ -208,4 +188,4 @@ public class VentanaMinas extends JFrame {
 	
 	
 	}
-}
+
