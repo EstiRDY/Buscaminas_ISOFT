@@ -107,7 +107,7 @@ public class VentanaMinas extends JFrame {
 		
 		setTitle("Buscaminas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, columnas*40, filas*40);
 		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBounds(new Rectangle(8, 8, 0, 0));
@@ -130,7 +130,7 @@ public class VentanaMinas extends JFrame {
 		      
 		         casillas[f][c]= new Casilla("num", null);
 		         panelminas.add(casillas[f][c]);
-		         casillas[f][c].setBounds(f*40,c*40,20,20); 
+		         //casillas[f][c].setBounds(f*40,c*40,20,20);
 		         //Medidas de las casillas. A tocar en otro momento
 		         casillas[f][c].addActionListener(casillas[f][c].getControlador());
 		         
