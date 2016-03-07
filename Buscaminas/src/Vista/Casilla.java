@@ -1,8 +1,12 @@
+package Vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 
@@ -15,20 +19,26 @@ public class Casilla extends JButton
 	public boolean descubierta = false;
 	public int contenido;
 	
+	
 	public Casilla(String text, Icon icon)
 	{
 		super(); //Constructor de JButton
 		//Versión anterior: constructor sin params.
 	}
 	
-	public int[][] getPosicion()
-	{ 
-		return null ;
-	}
-	
-
-	
-	
+	 /*private static ImageIcon createImageIcon(String path, 
+		     String description) throws MalformedURLException {
+		 	 URL oracle = new URL("http://universocelular.com/wp-content/uploads/2011/08/android-buscaminas.png");
+		     java.net.URL imgURL = oracle;
+		      
+		      if (imgURL != null) { 
+		         return new ImageIcon(imgURL, description);
+		      } else {            
+		         System.err.println("Couldn't find file: " + path);
+		         return null;
+		      }
+		   }   */
+	 
 	private class Controlador implements ActionListener 
 	{
 
