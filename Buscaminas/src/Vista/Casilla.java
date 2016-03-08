@@ -8,10 +8,12 @@ import java.net.URL;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 
 
-public class Casilla extends JButton
+public class Casilla extends JLabel
 {
 	
 	private Controlador controlador;
@@ -20,10 +22,10 @@ public class Casilla extends JButton
 	public int contenido;
 	
 	
-	public Casilla(String text, Icon icon)
+	public Casilla(String string, Icon icon)
 	{
-		super(); //Constructor de JButton
-		//Versión anterior: constructor sin params.
+		super();
+		
 	}
 	
 	 /*private static ImageIcon createImageIcon(String path, 
@@ -47,6 +49,7 @@ public class Casilla extends JButton
 			// TODO Auto-generated method stub
 			 if((e.getModifiers() & InputEvent.BUTTON1_MASK) == InputEvent.BUTTON1_MASK){
 		            System.out.println("Click con el botón izdo");
+		            if (Casilla.this.tieneMina==true) {System.out.println("fin del juego");}
 			       Casilla.this.setVisible(false); //descubrir casilla
 		          //if casilla es no descubierta ya, se puede hacer click. Si no, no!!!
 			 }
@@ -57,6 +60,7 @@ public class Casilla extends JButton
 		}
 }
 
+	
 	public ActionListener getControlador() {
 		if (controlador == null)
 		{

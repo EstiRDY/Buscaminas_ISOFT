@@ -10,30 +10,32 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Random;
 import java.awt.event.ActionEvent;
 import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 
 
-public class VentanaMinas extends JFrame {
+public class VentanaMinas extends JFrame implements Observer {
 
 	
 	private JPanel contentPane;
 	
 	
-	private final int nivel = 1;
-	private final int filas = 7;
-	private final int columnas = 10;
-	private final int numMinas = columnas*nivel;
+	
 	
 	//private Random aleatorio;
-	public Casilla casillas[][] = new Casilla [filas][columnas];
-	private JPanel panelminas;
+	
+	public static JPanel panelminas;
 	private JPanel menusuperior;
 	private JButton buttonSmiley;
 	
-	
+	public final static int nivel = 1;
+	public final static int filas = 7;
+	public final static int columnas = 10;
+	public final static int numMinas = columnas*nivel;
 	
 	/**
 	 * Launch the application.
@@ -86,7 +88,9 @@ public class VentanaMinas extends JFrame {
 				{
 					VentanaMinas nueva = new VentanaMinas();
 					nueva.initialize();
+					nueva.setVisible(true);
 					VentanaMinas.this.setVisible(false);
+//-------HACE COSAS RARAS!!!!!!!!!!! Duplica columnas			
 					
 				}
 			});
@@ -118,73 +122,22 @@ public class VentanaMinas extends JFrame {
 		setContentPane(contentPane);
 		contentPane.add(getPanel_1(), BorderLayout.NORTH);
 		
-		//(FILAS, COLUMNAS, SEPARACION X, SEPARACION Y)
-		
 		//
 		//this.ponerMinas(numMinas);
 		//
 		//this.asignarNumeros();
 		//
-		//  GENERAR TABLERO : 
-		for(int f = 0; f < filas; f++){
-		      for(int c = 0; c < columnas; c++){
-		      
-		         casillas[f][c]= new Casilla("num", null);
-		         panelminas.add(casillas[f][c]);
-		         //casillas[f][c].setBounds(f*40,c*40,20,20);
-		         //Medidas de las casillas. A tocar en otro momento
-		         casillas[f][c].addActionListener(casillas[f][c].getControlador());
-		         
-		      }
-		}
+		//
+		
 		
 		
 	} // fin inicializar
 	
+@Override
+public void update(Observable Juego, Object arg) {
+	// TODO Auto-generated method stub
 	
-	
-	
-	
-
-	private void asignarNumeros() {
-		// TODO Auto-generated method stub
-	
-	}
-
-	/*private void ponerMinas(int pMinas) {
-        pMinas = this.numMinas;
-        for ( int puestas = 0; puestas <= pMinas; puestas++) 
-         //coger una casilla[i][j] random, if notienemina, ponermina
-         {
-        	Random i = new Random(); Random j = new Random();
-        	int valorFila = i.nextInt(filas);  
-        	int valorColumna = j.nextInt(columnas); 
-        	
-        	if(casillas[valorFila][valorColumna].tieneMina == false)
-        	{
-        		casillas[valorFila][valorColumna].tieneMina = true;
-        	}
-        	else 
-        	{
-        		i = new Random(); j = new Random();
-        	}             
-             System.out.println( puestas );
-             /// Y UN DO-WHILE??? SI NO PONE MINA, GENERA ALEATORIO Y PARA AHÍ
-             
-           } 
-    }*/
-
-   private boolean ganarPartida() {
-        int minasDescubiertas = 0;
-        for (int f = 0; f < filas; f++){
-            for (int c = 0; c < columnas; c++){
-                if (casillas[f][c].descubierta){
-                    minasDescubiertas++;}}}
-        if (minasDescubiertas == numMinas)
-            {return true;}
-        else
-            {return false;}
-    }
+}
 	
 	
 	
