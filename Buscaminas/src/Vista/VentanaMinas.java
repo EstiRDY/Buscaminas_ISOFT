@@ -1,19 +1,18 @@
 package Vista;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controlador.Casilla;
+import Controlador.Juego;
+
 import java.awt.GridLayout;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Random;
-import java.awt.event.ActionEvent;
 import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 
@@ -23,19 +22,14 @@ public class VentanaMinas extends JFrame implements Observer {
 	
 	private JPanel contentPane;
 	
-	
-	
-	
-	//private Random aleatorio;
-	
 	public static JPanel panelminas;
 	private JPanel menusuperior;
 	private JButton buttonSmiley;
 	
-	public final static int nivel = 1;
-	public final static int filas = 7;
-	public final static int columnas = 10;
-	public final static int numMinas = columnas*nivel;
+	public Juego juego =  new Juego(1);
+	
+	public Casilla casillas[][] = new Casilla [juego.filas][juego.columnas];
+
 	
 	/**
 	 * Launch the application.
@@ -61,11 +55,12 @@ public class VentanaMinas extends JFrame implements Observer {
 	private JPanel getPanelminas() {
 		if (panelminas == null) {
 			panelminas = new JPanel();
-			panelminas.setLayout(new GridLayout(filas, columnas, 0, 0));
+			panelminas.setLayout(new GridLayout(Juego.filas, Juego.columnas, 0, 0));
 			
 		}
 		return panelminas;
 	}
+	
 	
 	//PANEL MENÚ SUPERIOR
 	private JPanel getPanel_1() {
@@ -87,11 +82,10 @@ public class VentanaMinas extends JFrame implements Observer {
 				public void mouseClicked(MouseEvent e) 
 				{
 					VentanaMinas nueva = new VentanaMinas();
-					nueva.initialize();
+					//Juego juegoNuevo = juego.clone();
 					nueva.setVisible(true);
-					VentanaMinas.this.setVisible(false);
-//-------HACE COSAS RARAS!!!!!!!!!!! Duplica columnas			
-					
+					VentanaMinas.this.dispose();
+						
 				}
 			});
 		}
@@ -99,20 +93,26 @@ public class VentanaMinas extends JFrame implements Observer {
 	}
 	
 	
-	//CONSTRUCTOR VENTANAMINAS
+
 	public VentanaMinas() 
 	{
 	 initialize();
 	}
+	/* 
+	 * proyecto maven vacio .
+	 * group id cualquiera: desarrollador
+	 * buscar junit en dependencias de pom.xml y la incorporamos
+	 * 
+	 * 
+	 * */
 	
-	
-	//INICIALIZAR VENTANA
+
 	private void initialize() 
 	{
 		
 		setTitle("Buscaminas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, columnas*40, filas*40);
+		setBounds(100, 100, Juego.columnas*40, Juego.filas*40);
 		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBounds(new Rectangle(8, 8, 0, 0));
@@ -122,23 +122,28 @@ public class VentanaMinas extends JFrame implements Observer {
 		setContentPane(contentPane);
 		contentPane.add(getPanel_1(), BorderLayout.NORTH);
 		
-		//
-		//this.ponerMinas(numMinas);
-		//
-		//this.asignarNumeros();
-		//
-		//
 		
-		
-		
-	} // fin inicializar
+		for(int f = 0; f < Juego.filas; f++){
+			  for(int c = 0; c < Juego.columnas; c++){
+		    	 
+		         casillas[f][c]= new Casilla("num", null);		         
+		         panelminas.add(casillas[f][c]);
+		         casillas[f][c].setBounds(f*10, c*10, 40, 40);
+		         casillas[f][c].addMouseListener(casillas[f][c].getControlador());	
+		        //System.out.println(c); 
+		      }
+		     // System.out.println(f);  
+		 } // fin for
+		//Juego.ponerMinas(Juego.numMinas);
+	}// fin initialize
 	
-@Override
-public void update(Observable Juego, Object arg) {
+public void update(Observable o, Object arg) {
 	// TODO Auto-generated method stub
 	
 }
-	
+
+
+
 	
 	
 	}

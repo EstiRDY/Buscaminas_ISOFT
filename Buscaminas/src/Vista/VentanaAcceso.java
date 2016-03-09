@@ -32,7 +32,7 @@ public class VentanaAcceso extends JFrame {
 	private JRadioButton facil;
 	private JRadioButton intermedio;
 	private JRadioButton dificil;
-	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private ButtonGroup buttonGroup = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -140,7 +140,7 @@ public class VentanaAcceso extends JFrame {
 	}
 	private JLabel getLblEligeNivelDe() {
 		if (lblEligeNivelDe == null) {
-			lblEligeNivelDe = new JLabel("Elige nivel de juego: (1 a 3)");
+			lblEligeNivelDe = new JLabel("Elige nivel de juego:");
 		}
 		return lblEligeNivelDe;
 	}
