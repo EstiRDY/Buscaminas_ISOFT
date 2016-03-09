@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controlador.Juego;
+
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
@@ -173,6 +176,8 @@ public class VentanaAcceso extends JFrame {
 			facil = new JRadioButton("F\u00E1cil");
 			buttonGroup.add(facil);
 		}
+		/*if(facil.isSelected()){
+			Juego.nivel = 1;}*/
 		return facil;
 	}
 	private JRadioButton getIntermedio() {
@@ -180,6 +185,8 @@ public class VentanaAcceso extends JFrame {
 			intermedio = new JRadioButton("Intermedio");
 			buttonGroup.add(intermedio);
 		}
+		/*if(intermedio.isSelected()){
+			Juego.nivel = 2;}*/
 		return intermedio;
 	}
 	private JRadioButton getDificil() {
@@ -187,6 +194,8 @@ public class VentanaAcceso extends JFrame {
 			dificil = new JRadioButton("Dif\u00EDcil");
 			buttonGroup.add(dificil);
 		}
+		/*if(dificil.isSelected()){
+			Juego.nivel = 3;}*/
 		return dificil;
 	}
 }//FIN CLASS

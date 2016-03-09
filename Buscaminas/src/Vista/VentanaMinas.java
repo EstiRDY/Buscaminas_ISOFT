@@ -105,7 +105,7 @@ public class VentanaMinas extends JFrame implements Observer {
 		
 		setTitle("Buscaminas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, Juego.columnas*40, Juego.filas*40);
+		setBounds(100, 100, Juego.columnas*100, Juego.filas*100);
 		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBounds(new Rectangle(8, 8, 0, 0));
@@ -120,7 +120,7 @@ public class VentanaMinas extends JFrame implements Observer {
 			  for(int c = 0; c < Juego.columnas; c++){
 		         casillas[f][c]= new Casilla("num", null);		         
 		         panelminas.add(casillas[f][c]);
-		         casillas[f][c].setBounds(f*10, c*10, 40, 40);
+		         //casillas[f][c].setBounds(f*10, c*10, 40, 40);
 		         casillas[f][c].addMouseListener(casillas[f][c].getControlador());
 		         
 		        //System.out.println(c); 
@@ -140,14 +140,15 @@ public void ponerMinas(int pMinas) {
     while(pMinas>0) 
      //coger una casilla[i][j] random, if notienemina, ponermina
      {
-    	int valorFila = (int)(Math.random()*(juego.filas-1));  
-    	int valorColumna = (int)(Math.random()*(juego.columnas-1)); 
+    	int valorFila = (int)(Math.random()*(juego.filas));  
+    	int valorColumna = (int)(Math.random()*(juego.columnas)); 
     	System.out.println(valorFila);
     	System.out.println(valorColumna);
-    	
+    	ImageIcon mina = new ImageIcon("img/mina100x100.jpg");
     	if(casillas[valorFila][valorColumna].estaMinada == false)
     	{
     		casillas[valorFila][valorColumna].estaMinada = true;
+    		casillas[valorFila][valorColumna].setIcon(mina);
     		pMinas--;
     		//No hace falta incrementar minas porque es un for
     	}
