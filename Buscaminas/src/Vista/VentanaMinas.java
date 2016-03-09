@@ -9,6 +9,9 @@ import Controlador.Casilla;
 import Controlador.Juego;
 
 import java.awt.GridLayout;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.MouseEvent;
 import java.util.Observable;
@@ -115,16 +118,16 @@ public class VentanaMinas extends JFrame implements Observer {
 		
 		for(int f = 0; f < Juego.filas; f++){
 			  for(int c = 0; c < Juego.columnas; c++){
-		    	 
 		         casillas[f][c]= new Casilla("num", null);		         
 		         panelminas.add(casillas[f][c]);
 		         casillas[f][c].setBounds(f*10, c*10, 40, 40);
-		         casillas[f][c].addMouseListener(casillas[f][c].getControlador());	
+		         casillas[f][c].addMouseListener(casillas[f][c].getControlador());
+		         
 		        //System.out.println(c); 
 		      }
 		     // System.out.println(f);  
 		 } // fin for
-		//Juego.ponerMinas(Juego.numMinas);
+		ponerMinas(juego.numMinas);
 	}// fin initialize
 	
 public void update(Observable o, Object arg) {
@@ -132,7 +135,29 @@ public void update(Observable o, Object arg) {
 	
 }
 
-
+public void ponerMinas(int pMinas) {
+    pMinas = juego.numMinas;
+    while(pMinas>0) 
+     //coger una casilla[i][j] random, if notienemina, ponermina
+     {
+    	int valorFila = (int)(Math.random()*(juego.filas-1));  
+    	int valorColumna = (int)(Math.random()*(juego.columnas-1)); 
+    	System.out.println(valorFila);
+    	System.out.println(valorColumna);
+    	
+    	if(casillas[valorFila][valorColumna].estaMinada == false)
+    	{
+    		casillas[valorFila][valorColumna].estaMinada = true;
+    		pMinas--;
+    		//No hace falta incrementar minas porque es un for
+    	}
+    	/*else 
+    	{
+    		i = new Random(); j = new Random();
+    	} */            
+         System.out.println( pMinas );
+    }
+}
 
 	
 	

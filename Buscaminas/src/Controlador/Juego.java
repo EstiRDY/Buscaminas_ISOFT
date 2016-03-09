@@ -61,27 +61,7 @@ private boolean ganarPartida() {
 
 
 
-private void ponerMinas(int pMinas) {
-        pMinas = this.numMinas;
-        for ( int puestas = 0; puestas <= pMinas; puestas++) 
-         //coger una casilla[i][j] random, if notienemina, ponermina
-         {
-        	Random i = new Random(); Random j = new Random();
-        	int valorFila = (int)(Math.random()*(filas-1));  
-        	int valorColumna = (int)(Math.random()*(columnas-1));  
-        	
-        	if(casillas[valorFila][valorColumna].estaMinada == false)
-        	{
-        		casillas[valorFila][valorColumna].estaMinada = true;
-        		//No hace falta incrementar minas porque es un for
-        	}
-        	else 
-        	{
-        		i = new Random(); j = new Random();
-        	}             
-             System.out.println( puestas );
-        }
-    }
+
 
 private void contarAlrededor(Casilla casillas[][])
 {
