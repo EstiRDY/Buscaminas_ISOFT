@@ -53,11 +53,9 @@ public class VentanaMinas extends JFrame implements Observer {
 	
 	//PANEL PRINCIPAL MINAS
 	private JPanel getPanelminas() {
-		if (panelminas == null) {
-			panelminas = new JPanel();
-			panelminas.setLayout(new GridLayout(Juego.filas, Juego.columnas, 0, 0));
-			
-		}
+		//if (panelminas == null) {}
+		panelminas = new JPanel();
+		panelminas.setLayout(new GridLayout(Juego.filas, Juego.columnas, 0, 0));
 		return panelminas;
 	}
 	
@@ -80,9 +78,9 @@ public class VentanaMinas extends JFrame implements Observer {
 			{
 				@Override
 				public void mouseClicked(MouseEvent e) 
-				{
+				{	
+					//Juego juegoNuevo = new Juego(1);
 					VentanaMinas nueva = new VentanaMinas();
-					//Juego juegoNuevo = juego.clone();
 					nueva.setVisible(true);
 					VentanaMinas.this.dispose();
 						
@@ -98,15 +96,7 @@ public class VentanaMinas extends JFrame implements Observer {
 	{
 	 initialize();
 	}
-	/* 
-	 * proyecto maven vacio .
-	 * group id cualquiera: desarrollador
-	 * buscar junit en dependencias de pom.xml y la incorporamos
-	 * 
-	 * 
-	 * */
 	
-
 	private void initialize() 
 	{
 		

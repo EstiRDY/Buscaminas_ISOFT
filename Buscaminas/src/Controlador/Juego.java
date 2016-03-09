@@ -67,12 +67,13 @@ private void ponerMinas(int pMinas) {
          //coger una casilla[i][j] random, if notienemina, ponermina
          {
         	Random i = new Random(); Random j = new Random();
-        	int valorFila = i.nextInt(filas);  
-        	int valorColumna = j.nextInt(columnas); 
+        	int valorFila = (int)(Math.random()*(filas-1));  
+        	int valorColumna = (int)(Math.random()*(columnas-1));  
         	
         	if(casillas[valorFila][valorColumna].estaMinada == false)
         	{
         		casillas[valorFila][valorColumna].estaMinada = true;
+        		//No hace falta incrementar minas porque es un for
         	}
         	else 
         	{
@@ -81,5 +82,10 @@ private void ponerMinas(int pMinas) {
              System.out.println( puestas );
         }
     }
+
+private void contarAlrededor(Casilla casillas[][])
+{
+	}
+
 }
 
