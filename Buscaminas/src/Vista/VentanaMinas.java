@@ -29,9 +29,9 @@ public class VentanaMinas extends JFrame implements Observer {
 	private JPanel menusuperior;
 	private JButton buttonSmiley;
 	
-	public Juego juego =  new Juego(1);
+	public static Juego juego =  new Juego(1);
 	
-	public Casilla casillas[][] = new Casilla [juego.filas][juego.columnas];
+	private static Casilla casillas[][] = new Casilla [juego.filas][juego.columnas];
 
 	
 	/**
@@ -58,7 +58,7 @@ public class VentanaMinas extends JFrame implements Observer {
 	private JPanel getPanelminas() {
 		//if (panelminas == null) {}
 		panelminas = new JPanel();
-		panelminas.setLayout(new GridLayout(Juego.filas, Juego.columnas, 0, 0));
+		panelminas.setLayout(new GridLayout(juego.filas, juego.columnas, 0, 0));
 		return panelminas;
 	}
 	
@@ -105,7 +105,7 @@ public class VentanaMinas extends JFrame implements Observer {
 		
 		setTitle("Buscaminas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, Juego.columnas*100, Juego.filas*100);
+		setBounds(100, 100, juego.columnas*40, juego.filas*40);
 		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBounds(new Rectangle(8, 8, 0, 0));
@@ -116,8 +116,8 @@ public class VentanaMinas extends JFrame implements Observer {
 		contentPane.add(getPanel_1(), BorderLayout.NORTH);
 		
 		
-		for(int f = 0; f < Juego.filas; f++){
-			  for(int c = 0; c < Juego.columnas; c++){
+		for(int f = 0; f < juego.filas; f++){
+			  for(int c = 0; c < juego.columnas; c++){
 		         casillas[f][c]= new Casilla("num", null);		         
 		         panelminas.add(casillas[f][c]);
 		         //casillas[f][c].setBounds(f*10, c*10, 40, 40);
@@ -127,37 +127,12 @@ public class VentanaMinas extends JFrame implements Observer {
 		      }
 		     // System.out.println(f);  
 		 } // fin for
-		ponerMinas(juego.numMinas);
+		juego.ponerMinas(juego.numMinas,casillas);
 	}// fin initialize
 	
 public void update(Observable o, Object arg) {
 	// TODO Auto-generated method stub
 	
-}
-
-public void ponerMinas(int pMinas) {
-    pMinas = juego.numMinas;
-    while(pMinas>0) 
-     //coger una casilla[i][j] random, if notienemina, ponermina
-     {
-    	int valorFila = (int)(Math.random()*(juego.filas));  
-    	int valorColumna = (int)(Math.random()*(juego.columnas)); 
-    	System.out.println(valorFila);
-    	System.out.println(valorColumna);
-    	ImageIcon mina = new ImageIcon("img/mina100x100.jpg");
-    	if(casillas[valorFila][valorColumna].estaMinada == false)
-    	{
-    		casillas[valorFila][valorColumna].estaMinada = true;
-    		casillas[valorFila][valorColumna].setIcon(mina);
-    		pMinas--;
-    		//No hace falta incrementar minas porque es un for
-    	}
-    	/*else 
-    	{
-    		i = new Random(); j = new Random();
-    	} */            
-         System.out.println( pMinas );
-    }
 }
 
 	

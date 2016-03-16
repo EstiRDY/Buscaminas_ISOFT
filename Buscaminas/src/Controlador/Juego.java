@@ -2,6 +2,8 @@ package Controlador;
 import java.util.Observable;
 import java.util.Random;
 
+import javax.swing.ImageIcon;
+
 import Vista.VentanaMinas;
 
 public class Juego extends Observable
@@ -12,13 +14,11 @@ public class Juego extends Observable
 	public static int columnas;
 	public static int numMinas;
 
-	public Casilla casillas[][] = new Casilla [filas][columnas];
-
 
 public Juego(int pNivel)
 {	
 	//cargar desde radioButtons
-	int pFilas = 0, pColumnas = 0, pMinas = 0;
+	int pFilas = 7, pColumnas = 10, pMinas = 10;
 	
 	switch (pNivel) {
 	case 1: pFilas = 7; pColumnas = 10;
@@ -46,7 +46,7 @@ private void asignarNumeros() {
 	// TODO Auto-generated method stub
 
 }
-private boolean ganarPartida() {
+private boolean ganarPartida(Casilla[][]casillas) {
 
     int minasDescubiertas = 0;
     for (int f = 0; f < filas; f++){
@@ -59,7 +59,30 @@ private boolean ganarPartida() {
         {return false;}
 }
 
-
+public static void ponerMinas(int pMinas, Casilla[][]casillas) {
+    pMinas = Juego.numMinas;
+    while(pMinas>0) 
+     //coger una casilla[i][j] random, if notienemina, ponermina
+     {
+    	int valorFila = (int)(Math.random()*(Juego.filas));  
+    	int valorColumna = (int)(Math.random()*(Juego.columnas)); 
+    	System.out.println(valorFila);
+    	System.out.println(valorColumna);
+    	ImageIcon mina = new ImageIcon("img/mina100x100.jpg");
+    	if(casillas[valorFila][valorColumna].estaMinada == false)
+    	{
+    		casillas[valorFila][valorColumna].estaMinada = true;
+    		casillas[valorFila][valorColumna].setIcon(mina);
+    		pMinas--;
+    		//No hace falta incrementar minas porque es un for
+    	}
+    	/*else 
+    	{
+    		i = new Random(); j = new Random();
+    	} */            
+         System.out.println( pMinas );
+    }
+}
 
 
 
