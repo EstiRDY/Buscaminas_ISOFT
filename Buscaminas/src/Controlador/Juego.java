@@ -87,8 +87,9 @@ public static void ponerMinas(int pMinas, Casilla[][]casillas) {
 
 
 public void contarAlrededor(Casilla casillas[][])
-{  for(int i=0;i<this.filas;i++){
+{  for(int i=0;i<this.filas;i++){System.out.println(i);
     for(int j=0;j<this.columnas;j++){
+    	System.out.println(j);
         //esquina superior izquierda
         if(i==0&&j==0){
             if(casillas[i+1][j].estaMinada){
@@ -102,9 +103,10 @@ public void contarAlrededor(Casilla casillas[][])
             }
         }
         //esquina superior derecha
-        if(i==0&&j==this.columnas){
-            if(casillas[i][j-1].estaMinada){
-                casillas[i][j].minasAlrededor++;
+        if(i==0&&j==this.columnas-1){
+        	//j = this.columnas;
+        	if(casillas[i][j-1].estaMinada){
+            casillas[i][j].minasAlrededor++;
             }
             if(casillas[i+1][j].estaMinada){
                 casillas[i][j].minasAlrededor++;
@@ -112,8 +114,9 @@ public void contarAlrededor(Casilla casillas[][])
             if(casillas[i+1][j-1].estaMinada){
                 casillas[i][j].minasAlrededor++;
             }
+        }
         //esquina inferior izquierda
-        if(i==this.filas&&j==0){
+        if(i==this.filas-1 && j==0){
             if(casillas[i-1][j].estaMinada){
                 casillas[i][j].minasAlrededor++;
             }
@@ -123,8 +126,9 @@ public void contarAlrededor(Casilla casillas[][])
             if(casillas[i-1][j+1].estaMinada){
                 casillas[i][j].minasAlrededor++;
             }
+        }
         //esquina inferior derecha
-        if(i==this.filas&&j==this.columnas){
+        if(i==this.filas-1 && j== this.columnas-1){
             if(casillas[i][j-1].estaMinada){
                 casillas[i][j].minasAlrededor++;
             }
@@ -134,9 +138,10 @@ public void contarAlrededor(Casilla casillas[][])
             if(casillas[i-1][j].estaMinada){
                 casillas[i][j].minasAlrededor++;
             }
+        }
         //lado izquierdo
-        if((i!=0||i!=this.columnas)&&j==0){
-            if(casillas[i-1][j].estaMinada){
+        if(i!=0&&i!=this.filas-1&&j==0){
+        	    if(casillas[i-1][j].estaMinada){
                 casillas[i][j].minasAlrededor++;
             }
             if(casillas[i-1][j+1].estaMinada){
@@ -153,7 +158,7 @@ public void contarAlrededor(Casilla casillas[][])
             }
         }
         //lado superior
-        if(i==0&&(j!=0||j!=this.columnas)){
+        if(i==0&&j!=0&&j!=this.columnas-1){
             if(casillas[i][j-1].estaMinada){
                 casillas[i][j].minasAlrededor++;
             }
@@ -171,7 +176,7 @@ public void contarAlrededor(Casilla casillas[][])
             }
         }
         //lado derecho
-        if((i!=0||i!=this.filas)&&j==this.columnas){
+        if(i!=0&&i!=this.filas-1&&j==this.columnas-1){
             if(casillas[i-1][j].estaMinada){
                 casillas[i][j].minasAlrededor++;
             }
@@ -189,7 +194,7 @@ public void contarAlrededor(Casilla casillas[][])
             }
         }
         //lado inferior
-        if(i==this.filas&&(j!=0||j!=this.columnas)){
+        if(i==this.filas-1 && j!=0 && j!=this.columnas-1){
             if(casillas[i][j-1].estaMinada){
                 casillas[i][j].minasAlrededor++;
             }
@@ -207,7 +212,7 @@ public void contarAlrededor(Casilla casillas[][])
             }
         }
         //Para las casillas del interior de la matriz
-        else{
+       if(j != 0 && j != this.columnas-1 && i != 0 && i != this.filas-1){
             if(casillas[i-1][j-1].estaMinada){
                 casillas[i][j].minasAlrededor++;
             }
@@ -236,9 +241,9 @@ public void contarAlrededor(Casilla casillas[][])
         }
         }
         }
-    }
-}
+    
+
 	}
 
-}
+
 

@@ -26,7 +26,7 @@ public class Casilla extends JButton //extends Observable
 	public boolean descubierta = false;
 	public boolean estaMinada = false;
 	private Controlador controlador; 
-	public int minasAlrededor = 0;
+	public int minasAlrededor;
 	public boolean esPulsable = true;
 	
 	
@@ -36,7 +36,6 @@ public class Casilla extends JButton //extends Observable
 		notifyObservers();*/
 		
 	}
-
 
 	public void addListener(InvalidationListener listener) {// TODO Auto-generated method stub
 	
@@ -53,12 +52,13 @@ public class Casilla extends JButton //extends Observable
 		
 		public void mouseClicked(MouseEvent e) { //Si no ha sido pulsadaIzq
 			if (e.getButton()== MouseEvent.BUTTON1 && Casilla.this.esPulsable == true)
-			{	//Si no tiene icono
+			{	
+				//Si no tiene icono
 				if(Casilla.this.getIcon()== null)
 				{
-				 if (Casilla.this.minasAlrededor > 0) {
+				if (Casilla.this.minasAlrededor > 0) {
 						Casilla.this.setText(String.valueOf(minasAlrededor));
-						System.out.println(Casilla.this.minasAlrededor);
+						//System.out.println(Casilla.this.minasAlrededor);
 				 } 
 				
 				else {Casilla.this.setText("");	}
