@@ -1,4 +1,5 @@
 package Controlador;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
@@ -26,6 +27,8 @@ public class Casilla extends JButton //extends Observable
 	public boolean estaMinada = false;
 	private Controlador controlador; 
 	private int minasAlrededor;
+	public boolean esPulsable = true;
+	
 	
 	public Casilla(String text, Icon icon) {
 		super();
@@ -48,34 +51,29 @@ public class Casilla extends JButton //extends Observable
 	private class Controlador implements MouseListener{
 
 		
-		public void mouseClicked(MouseEvent e) {
-			if (e.getButton()== MouseEvent.BUTTON1)
-			{
+		public void mouseClicked(MouseEvent e) { //Si no ha sido pulsadaIzq
+			if (e.getButton()== MouseEvent.BUTTON1 && Casilla.this.esPulsable == true)
+			{	//Si no tiene icono
 				if(Casilla.this.getIcon()== null)
 				{
 				 if (Casilla.this.minasAlrededor > 0) {
 						Casilla.this.setText(String.valueOf(minasAlrededor));
-	
-				} 
+				 } 
 				
-				else {
-						Casilla.this.setText("");
-				}
-					System.out.println("click izq");
-					//Casilla.this.setVisible(false);
+				else {Casilla.this.setText("");	}
+				 
+				System.out.println("click izq");
+				Casilla.this.setBackground(Color.white);
+				//Casilla.this.setFont(font);
+				Casilla.this.esPulsable = false;
 					
 				}
-		 			
-		  if(Casilla.this.estaMinada){
-						System.out.println("TieneMina");
-		  }
-					
-				
-				
+		 		//Si tiene mina	
+				if(Casilla.this.estaMinada){System.out.println("TieneMina"); }
 				}
 				
 			
-			
+			//Pulsar derecho
 			if (e.getButton() == MouseEvent.BUTTON3)
 			{
 				if(Casilla.this.getIcon()==null){
