@@ -49,10 +49,12 @@ public class Casilla extends JButton //extends Observable
 		public void mouseClicked(MouseEvent e) {
 			if (e.getButton()== MouseEvent.BUTTON1)
 			{
+				if(Casilla.this.getIcon()==null){
 				System.out.println("click izq");
 				Casilla.this.setVisible(false);
 				if(Casilla.this.estaMinada){
 					System.out.println("TieneMina");
+				}
 				}
 				
 			}
