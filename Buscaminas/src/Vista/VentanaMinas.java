@@ -128,6 +128,7 @@ public class VentanaMinas extends JFrame implements Observer {
 		     // System.out.println(f);  
 		 } // fin for
 		juego.ponerMinas(juego.numMinas,casillas);
+		juego.contarAlrededor(casillas);
 	}// fin initialize
 	
 public void update(Observable o, Object arg) {

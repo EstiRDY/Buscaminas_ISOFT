@@ -26,7 +26,7 @@ public class Casilla extends JButton //extends Observable
 	public boolean descubierta = false;
 	public boolean estaMinada = false;
 	private Controlador controlador; 
-	private int minasAlrededor;
+	public int minasAlrededor = 0;
 	public boolean esPulsable = true;
 	
 	
@@ -58,6 +58,7 @@ public class Casilla extends JButton //extends Observable
 				{
 				 if (Casilla.this.minasAlrededor > 0) {
 						Casilla.this.setText(String.valueOf(minasAlrededor));
+						System.out.println(Casilla.this.minasAlrededor);
 				 } 
 				
 				else {Casilla.this.setText("");	}

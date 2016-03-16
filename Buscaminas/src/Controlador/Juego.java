@@ -86,8 +86,158 @@ public static void ponerMinas(int pMinas, Casilla[][]casillas) {
 
 
 
-private void contarAlrededor(Casilla casillas[][])
-{
+public void contarAlrededor(Casilla casillas[][])
+{  for(int i=0;i<this.filas;i++){
+    for(int j=0;j<this.columnas;j++){
+        //esquina superior izquierda
+        if(i==0&&j==0){
+            if(casillas[i+1][j].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i][j+1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i+1][j+1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+        }
+        //esquina superior derecha
+        if(i==0&&j==this.columnas){
+            if(casillas[i][j-1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i+1][j].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i+1][j-1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+        //esquina inferior izquierda
+        if(i==this.filas&&j==0){
+            if(casillas[i-1][j].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i][j+1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i-1][j+1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+        //esquina inferior derecha
+        if(i==this.filas&&j==this.columnas){
+            if(casillas[i][j-1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i-1][j-1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i-1][j].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+        //lado izquierdo
+        if((i!=0||i!=this.columnas)&&j==0){
+            if(casillas[i-1][j].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i-1][j+1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i][j+1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i+1][j+1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i+1][j].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+        }
+        //lado superior
+        if(i==0&&(j!=0||j!=this.columnas)){
+            if(casillas[i][j-1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i+1][j-1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i+1][j].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i+1][j+1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i][j+1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+        }
+        //lado derecho
+        if((i!=0||i!=this.filas)&&j==this.columnas){
+            if(casillas[i-1][j].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i-1][j-1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i][j-1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i+1][j-1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i+1][j].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+        }
+        //lado inferior
+        if(i==this.filas&&(j!=0||j!=this.columnas)){
+            if(casillas[i][j-1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i-1][j-1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i-1][j].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i-1][j+1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i][j+1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+        }
+        //Para las casillas del interior de la matriz
+        else{
+            if(casillas[i-1][j-1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i-1][j].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i-1][j+1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i][j+1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i+1][j+1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i+1][j].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i+1][j-1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+            if(casillas[i][j-1].estaMinada){
+                casillas[i][j].minasAlrededor++;
+            }
+        }
+        }
+        }
+        }
+    }
+}
 	}
 
 }
