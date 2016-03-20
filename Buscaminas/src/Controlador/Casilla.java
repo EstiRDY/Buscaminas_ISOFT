@@ -27,7 +27,10 @@ public class Casilla extends JButton //extends Observable
 	public boolean estaMinada = false;
 	private Controlador controlador; 
 	public int minasAlrededor;
-	public boolean esPulsable = true;
+	public boolean esPulsableIzq = true;
+	public boolean esPulsableDer = true;
+	private int columna;
+	private int fila;
 	
 	
 	public Casilla(String text, Icon icon) {
@@ -46,46 +49,63 @@ public class Casilla extends JButton //extends Observable
 		
 	}
 
+	public void setPosicion()
+	{
+		this.fila = Juego.getFila(this);
+		this.columna = Juego.getColumna(this);
+	}
 	
 	private class Controlador implements MouseListener{
 
-		
+	
 		public void mouseClicked(MouseEvent e) { //Si no ha sido pulsadaIzq
-			if (e.getButton()== MouseEvent.BUTTON1 && Casilla.this.esPulsable == true)
+			if (e.getButton()== MouseEvent.BUTTON1 && Casilla.this.esPulsableIzq == true)
 			{	
 				//Si no tiene icono
 				if(Casilla.this.getIcon()== null)
 				{
 				if (Casilla.this.minasAlrededor > 0) {
 						Casilla.this.setText(String.valueOf(minasAlrededor));
-						//System.out.println(Casilla.this.minasAlrededor);
+						Casilla.this.setPosicion();
+						System.out.println(Casilla.this.fila);
 				 } 
 				
-				else {Casilla.this.setText("");	}
+				else {
+					Casilla.this.setText("");
+					/*filaEsta = Casilla.this.getFila() ; 
+					 * columnaEsta = Casilla.this.getColumna()
+					 * for (toda la matriz)
+					 * 		
+					 * */
+					//pulsar las de alrededor!!!
+					}
 				 
-				System.out.println("click izq");
 				Casilla.this.setBackground(Color.white);
 				//Casilla.this.setFont(font);
-				Casilla.this.esPulsable = false;
+				Casilla.this.esPulsableIzq = false;
 					
 				}
 		 		//Si tiene mina	
-				if(Casilla.this.estaMinada){System.out.println("TieneMina"); }
+				if(Casilla.this.estaMinada){System.out.println("TieneMina"); 
+				//tiene que acabar el juego!!!! 
+				}
 				}
 				
 			
 			//Pulsar derecho
-			if (e.getButton() == MouseEvent.BUTTON3)
+			if (e.getButton() == MouseEvent.BUTTON3 && Casilla.this.esPulsableDer == true)
 			{
 				if(Casilla.this.getIcon()==null){
 				ImageIcon bandera = new ImageIcon("img/bandera.jpg");
 				Casilla.this.setIcon(bandera);
+				Casilla.this.esPulsableIzq = false;
 				}
-				else{
-					Casilla.this.setIcon(null);
-				}
-				System.out.println("click dch");
 				
+				else
+				{
+					Casilla.this.setIcon(null);
+					Casilla.this.esPulsableDer = true;
+				}
 			}
 		}
 

@@ -13,6 +13,7 @@ public class Juego extends Observable
 	public static int filas;
 	public static int columnas;
 	public static int numMinas;
+	
 
 
 public Juego(int pNivel)
@@ -34,7 +35,7 @@ public Juego(int pNivel)
 	this.columnas = pColumnas; 
 	this.numMinas = pMinas;
 	
-	System.out.println(this.filas+","+this.columnas+","+this.nivel);
+	//System.out.println(this.filas+","+this.columnas+","+this.nivel);
 	
 	/*setChanged();
 	notifyObservers();*/
@@ -42,10 +43,7 @@ public Juego(int pNivel)
 
 
 
-private void asignarNumeros() {
-	// TODO Auto-generated method stub
 
-}
 private boolean ganarPartida(Casilla[][]casillas) {
 
     int minasDescubiertas = 0;
@@ -66,8 +64,8 @@ public static void ponerMinas(int pMinas, Casilla[][]casillas) {
      {
     	int valorFila = (int)(Math.random()*(Juego.filas));  
     	int valorColumna = (int)(Math.random()*(Juego.columnas)); 
-    	System.out.println(valorFila);
-    	System.out.println(valorColumna);
+    	//System.out.println(valorFila);
+    	//System.out.println(valorColumna);
     	ImageIcon mina = new ImageIcon("img/mina2.jpg");
     	if(casillas[valorFila][valorColumna].estaMinada == false)
     	{
@@ -80,11 +78,30 @@ public static void ponerMinas(int pMinas, Casilla[][]casillas) {
     	{
     		i = new Random(); j = new Random();
     	} */            
-         System.out.println( pMinas );
+        // System.out.println( pMinas );
     }
 }
 
-
+	public static int getFila(Casilla casilla){
+		int fila = 0; 
+		{for ( int i = 0; i < filas; ++i ) {
+		    for ( int c = 0; c < columnas; ++c ) {
+		         fila = i;
+		     }
+			}
+			}
+		return fila;
+	}
+	public static int getColumna(Casilla casilla){
+		int fila = 0; int columna = 0;
+		{for ( int i = 0; i < filas; ++i ) {
+		    for ( int c = 0; c < columnas; ++c ) {
+		         columna = c;
+		     }
+			}
+			}
+		return columna;
+	}
 
 public void contarAlrededor(Casilla casillas[][])
 {  for(int i=0;i<this.filas;i++){
@@ -241,19 +258,6 @@ public void contarAlrededor(Casilla casillas[][])
         }
         }
         }
-    
-public void descubrirAlrededor(Casilla casillas[][])
-{	  for(int i=0;i<this.filas;i++){
-		for(int j=0;j<this.columnas;j++){
-				if (casillas[i][j].minasAlrededor == 0 )
-				{
-					//casillas[i][j].descubrir casillas
-				}			
-				
-		}
-	}
-	
-}
 	}
 
 
