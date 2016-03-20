@@ -68,7 +68,7 @@ public static void ponerMinas(int pMinas, Casilla[][]casillas) {
     	int valorColumna = (int)(Math.random()*(Juego.columnas)); 
     	System.out.println(valorFila);
     	System.out.println(valorColumna);
-    	ImageIcon mina = new ImageIcon("img/mina100x100.jpg");
+    	ImageIcon mina = new ImageIcon("img/mina2.jpg");
     	if(casillas[valorFila][valorColumna].estaMinada == false)
     	{
     		casillas[valorFila][valorColumna].estaMinada = true;
@@ -87,9 +87,9 @@ public static void ponerMinas(int pMinas, Casilla[][]casillas) {
 
 
 public void contarAlrededor(Casilla casillas[][])
-{  for(int i=0;i<this.filas;i++){System.out.println(i);
+{  for(int i=0;i<this.filas;i++){
     for(int j=0;j<this.columnas;j++){
-    	System.out.println(j);
+    	
         //esquina superior izquierda
         if(i==0&&j==0){
             if(casillas[i+1][j].estaMinada){
@@ -242,7 +242,18 @@ public void contarAlrededor(Casilla casillas[][])
         }
         }
     
-
+public void descubrirAlrededor(Casilla casillas[][])
+{	  for(int i=0;i<this.filas;i++){
+		for(int j=0;j<this.columnas;j++){
+				if (casillas[i][j].minasAlrededor == 0 )
+				{
+					//casillas[i][j].descubrir casillas
+				}			
+				
+		}
+	}
+	
+}
 	}
 
 

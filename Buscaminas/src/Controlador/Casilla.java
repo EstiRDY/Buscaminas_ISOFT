@@ -78,8 +78,8 @@ public class Casilla extends JButton //extends Observable
 			if (e.getButton() == MouseEvent.BUTTON3)
 			{
 				if(Casilla.this.getIcon()==null){
-					//Posteriormente meter imagen de la bandera
-				Casilla.this.setIcon(new ImageIcon ("img/mina.jpg"));
+				ImageIcon bandera = new ImageIcon("img/bandera.jpg");
+				Casilla.this.setIcon(bandera);
 				}
 				else{
 					Casilla.this.setIcon(null);

@@ -105,7 +105,7 @@ public class VentanaMinas extends JFrame implements Observer {
 		
 		setTitle("Buscaminas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, juego.columnas*70, juego.filas*70);
+		setBounds(100, 100, juego.columnas*100, juego.filas*100);
 		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBounds(new Rectangle(8, 8, 0, 0));
