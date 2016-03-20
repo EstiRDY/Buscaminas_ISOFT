@@ -29,8 +29,8 @@ public class Casilla extends JButton //extends Observable
 	public int minasAlrededor;
 	public boolean esPulsableIzq = true;
 	public boolean esPulsableDer = true;
-	private int columna;
-	private int fila;
+	//private int columna;
+	//private int fila;
 	MouseEvent e;
 	
 	public Casilla(String text, Icon icon) {
@@ -49,11 +49,11 @@ public class Casilla extends JButton //extends Observable
 		
 	}
 
-	public void setPosicion()
+	/*public void setPosicion()
 	{
 		this.fila = Juego.getFila(this);
 		this.columna = Juego.getColumna(this);
-	}
+	}*/
 
 	public void pulsar(MouseEvent e){//Si no ha sido pulsadaIzq
 		if (e.getButton()== MouseEvent.BUTTON1 && Casilla.this.esPulsableIzq == true )
@@ -63,8 +63,8 @@ public class Casilla extends JButton //extends Observable
 			{
 			if (Casilla.this.minasAlrededor > 0) {
 					Casilla.this.setText(String.valueOf(minasAlrededor));
-					Casilla.this.setPosicion();
-					System.out.println(Casilla.this.fila);
+					//Casilla.this.setPosicion();
+					//System.out.println(Casilla.this.fila);
 			 } 
 			
 			else {

@@ -74,15 +74,10 @@ public static void ponerMinas(int pMinas, Casilla[][]casillas) {
     		pMinas--;
     		//No hace falta incrementar minas porque es un for
     	}
-    	/*else 
-    	{
-    		i = new Random(); j = new Random();
-    	} */            
-        // System.out.println( pMinas );
-    }
+      }
 }
 
-	public static int getFila(Casilla casilla){
+/*	public static int getFila(Casilla casilla){
 		int fila = 0; 
 		{for ( int i = 0; i < filas; ++i ) {
 		    for ( int c = 0; c < columnas; ++c ) {
@@ -101,7 +96,7 @@ public static void ponerMinas(int pMinas, Casilla[][]casillas) {
 			}
 			}
 		return columna;
-	}
+	}*/
 
 public void contarAlrededor(Casilla casillas[][])
 {  for(int i=0;i<this.filas;i++){
