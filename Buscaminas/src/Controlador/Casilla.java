@@ -83,7 +83,7 @@ public class Casilla extends JButton //extends Observable
 				Casilla.this.setBackground(Color.white);
 				//Casilla.this.setFont(font);
 				Casilla.this.esPulsableIzq = false;
-					
+				Casilla.this.esPulsableDer = false;	
 				}
 		 		//Si tiene mina	
 				if(Casilla.this.estaMinada){System.out.println("TieneMina"); 
