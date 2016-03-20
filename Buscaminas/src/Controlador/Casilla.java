@@ -59,7 +59,7 @@ public class Casilla extends JButton //extends Observable
 
 	
 		public void mouseClicked(MouseEvent e) { //Si no ha sido pulsadaIzq
-			if (e.getButton()== MouseEvent.BUTTON1 && Casilla.this.esPulsableIzq == true)
+			if (e.getButton()== MouseEvent.BUTTON1 && Casilla.this.esPulsableIzq == true )
 			{	
 				//Si no tiene icono
 				if(Casilla.this.getIcon()== null)
@@ -104,7 +104,7 @@ public class Casilla extends JButton //extends Observable
 				else
 				{
 					Casilla.this.setIcon(null);
-					Casilla.this.esPulsableDer = true;
+					Casilla.this.esPulsableIzq = true;
 				}
 			}
 		}
