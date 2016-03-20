@@ -1,4 +1,5 @@
 package Controlador;
+import java.awt.event.MouseEvent;
 import java.util.Observable;
 import java.util.Random;
 
@@ -13,6 +14,7 @@ public class Juego extends Observable
 	public static int filas;
 	public static int columnas;
 	public static int numMinas;
+	
 	
 
 
@@ -76,27 +78,17 @@ public static void ponerMinas(int pMinas, Casilla[][]casillas) {
     	}
       }
 }
+public static void finJuego (Casilla casillas[][])
+{	
+	for(int i=0;i<Juego.filas;i++){
+	    for(int j=0;j<Juego.columnas;j++){
+	    	
+	    	//casillas[i][j].pulsar(null);
+	    }
+	   }
+ }
 
-/*	public static int getFila(Casilla casilla){
-		int fila = 0; 
-		{for ( int i = 0; i < filas; ++i ) {
-		    for ( int c = 0; c < columnas; ++c ) {
-		         fila = i;
-		     }
-			}
-			}
-		return fila;
-	}
-	public static int getColumna(Casilla casilla){
-		int fila = 0; int columna = 0;
-		{for ( int i = 0; i < filas; ++i ) {
-		    for ( int c = 0; c < columnas; ++c ) {
-		         columna = c;
-		     }
-			}
-			}
-		return columna;
-	}*/
+
 
 public void contarAlrededor(Casilla casillas[][])
 {  for(int i=0;i<this.filas;i++){

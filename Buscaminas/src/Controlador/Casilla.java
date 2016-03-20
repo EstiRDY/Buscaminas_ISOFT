@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Vista.VentanaMinas;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 
@@ -29,17 +30,27 @@ public class Casilla extends JButton //extends Observable
 	public int minasAlrededor;
 	public boolean esPulsableIzq = true;
 	public boolean esPulsableDer = true;
-	//private int columna;
-	//private int fila;
+	public int columna;
+	public int fila;
 	MouseEvent e;
 	
+	
+
+
+
 	public Casilla(String text, Icon icon) {
 		super();
 		/*setChanged();
 		notifyObservers();*/
 		
 	}
+	public int getColumna() {
+		return this.columna;
+	}
 
+	public int getFila() {
+		return this.fila;
+	}
 	public void addListener(InvalidationListener listener) {// TODO Auto-generated method stub
 	
 	}
@@ -49,67 +60,57 @@ public class Casilla extends JButton //extends Observable
 		
 	}
 
-	/*public void setPosicion()
-	{
-		this.fila = Juego.getFila(this);
-		this.columna = Juego.getColumna(this);
-	}*/
 
-	public void pulsar(MouseEvent e){//Si no ha sido pulsadaIzq
-		if (e.getButton()== MouseEvent.BUTTON1 && Casilla.this.esPulsableIzq == true )
-		{	
-			//Si no tiene icono
-			if(Casilla.this.getIcon()== null)
-			{
-			if (Casilla.this.minasAlrededor > 0) {
-					Casilla.this.setText(String.valueOf(minasAlrededor));
-					//Casilla.this.setPosicion();
-					//System.out.println(Casilla.this.fila);
-			 } 
-			
-			else {
-				Casilla.this.setText(""); //CAMBIOS
-				/*Casilla.this.setPosicion();
-				for(int i=0; i<this.fila;i++)
-				{ for(int c =0; c<this.columna;c++){
-					this.pulsar(e);
-					}
-				}*/
-				
-			}
-			 
-			Casilla.this.setBackground(Color.white);
-			//Casilla.this.setFont(font);
-			Casilla.this.esPulsableIzq = false;
-			Casilla.this.esPulsableDer = false;	
-			}
-	 		//Si tiene mina	
-			if(Casilla.this.estaMinada){System.out.println("TieneMina"); 
-			//tiene que acabar el juego!!!! 
-			}
-			}
-			
-		
-		//Pulsar derecho
-		if (e.getButton() == MouseEvent.BUTTON3 && Casilla.this.esPulsableDer == true)
-		{
-			if(Casilla.this.getIcon()==null){
-			ImageIcon bandera = new ImageIcon("img/bandera.jpg");
-			Casilla.this.setIcon(bandera);
-			Casilla.this.esPulsableIzq = false;
-			}
-			
-			else
-			{
-				Casilla.this.setIcon(null);
-				Casilla.this.esPulsableIzq = true;
-			}
-		}}
+	public void pulsar(){}
 	
 	private class Controlador implements MouseListener{
 
 	
-		public void mouseClicked(MouseEvent e) { Casilla.this.pulsar(e);}
+		public void mouseClicked(MouseEvent e) {//Si no ha sido pulsadaIzq
+			if (e.getButton()== MouseEvent.BUTTON1 && Casilla.this.esPulsableIzq == true )
+			{	
+				//Si no tiene icono
+				if(Casilla.this.getIcon()== null)
+					System.out.println(Casilla.this.fila);
+				{
+				if (Casilla.this.minasAlrededor > 0) {
+						Casilla.this.setText(String.valueOf(minasAlrededor));
+						
+				 } 
+				
+				else {
+					Casilla.this.setText("");
+				
+				}
+				 
+				Casilla.this.setBackground(Color.white);
+				//Casilla.this.setFont(font);
+				Casilla.this.esPulsableIzq = false;
+				Casilla.this.esPulsableDer = false;	
+				}
+		 		//Si tiene mina	
+				if(Casilla.this.estaMinada){System.out.println("TieneMina"); 
+				
+				
+				}
+				}
+				
+			
+			//Pulsar derecho
+			if (e.getButton() == MouseEvent.BUTTON3 && Casilla.this.esPulsableDer == true)
+			{
+				if(Casilla.this.getIcon()==null){
+				ImageIcon bandera = new ImageIcon("img/bandera.jpg");
+				Casilla.this.setIcon(bandera);
+				Casilla.this.esPulsableIzq = false;
+				}
+				
+				else
+				{
+					Casilla.this.setIcon(null);
+					Casilla.this.esPulsableIzq = true;
+				}
+			} }
 
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
