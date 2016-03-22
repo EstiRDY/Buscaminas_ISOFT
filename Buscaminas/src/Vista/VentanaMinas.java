@@ -25,11 +25,11 @@ public class VentanaMinas extends JFrame implements Observer {
 	
 	private JPanel contentPane;
 	
-	public static JPanel panelminas;
+	private JPanel panelminas;
 	private JPanel menusuperior;
 	private JButton buttonSmiley;
 	
-	public static Juego juego =  new Juego(1);
+	public static Juego juego =  new Juego(2);
 	
 	private static Casilla casillas[][] = new Casilla [juego.filas][juego.columnas];
 
@@ -56,9 +56,11 @@ public class VentanaMinas extends JFrame implements Observer {
 	
 	//PANEL PRINCIPAL MINAS
 	private JPanel getPanelminas() {
-		if (panelminas == null) {}
-		panelminas = new JPanel();
-		panelminas.setLayout(new GridLayout(juego.filas, juego.columnas, 0, 0));
+		if (panelminas == null)
+		{
+			panelminas = new JPanel();
+			panelminas.setLayout(new GridLayout(juego.filas, juego.columnas, 0, 0));
+		}
 		return panelminas;
 	}
 	
@@ -131,11 +133,12 @@ public class VentanaMinas extends JFrame implements Observer {
 		 } // fin for
 		juego.ponerMinas(juego.numMinas,casillas);
 		juego.contarAlrededor(casillas);
+		//juego.finJuego(casillas);
 		
 	}// fin initialize
 	
 public void update(Observable o, Object arg) {
-	 juego.finJuego(casillas);
+	 
 	
 }
 

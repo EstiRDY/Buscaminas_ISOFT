@@ -68,11 +68,11 @@ public static void ponerMinas(int pMinas, Casilla[][]casillas) {
     	int valorColumna = (int)(Math.random()*(Juego.columnas)); 
     	//System.out.println(valorFila);
     	//System.out.println(valorColumna);
-    	ImageIcon mina = new ImageIcon("img/mina2.jpg");
+    	//ImageIcon mina = new ImageIcon("img/mina2.jpg");
     	if(casillas[valorFila][valorColumna].estaMinada == false)
     	{
     		casillas[valorFila][valorColumna].estaMinada = true;
-    		casillas[valorFila][valorColumna].setIcon(mina);
+    		//casillas[valorFila][valorColumna].setIcon(mina);
     		pMinas--;
     		//No hace falta incrementar minas porque es un for
     	}
@@ -82,8 +82,9 @@ public static void finJuego (Casilla casillas[][])
 {	
 	for(int i=0;i<Juego.filas;i++){
 	    for(int j=0;j<Juego.columnas;j++){
-	    	
-	    	//casillas[i][j].pulsar(null);
+	    	if(casillas[i][j].estaMinada==true&&casillas[i][j].descubierta==false){
+	    	casillas[i][j].pulsar();
+	    	}
 	    }
 	   }
  }
@@ -245,6 +246,8 @@ public void contarAlrededor(Casilla casillas[][])
         }
         }
         }
+
+	
 	}
 
 
