@@ -88,7 +88,38 @@ public static void finJuego (Casilla casillas[][])
 	    }
 	   }
  }
-
+public static void revelarAlrededor(Casilla casillas[][],Casilla casillaActual){
+	/*
+	 *Tenemos la fila y la columna de la casilla pulsada
+	 *Para la casilla pulsada comprobamos en que posicion del tablero se encuentra
+	 *y en función de la posicion (esquina,lado o central)revelamos las casillas que tiene alrededor
+	 *Además si alguna de las casillas reveladas tampoco tiene minas alrededor
+	 *ejecutará este mismo método de manera recursiva
+	 *int i=casillaActual.fila;
+	 *int j=casillaActual.columna; 
+	 *if(i==0&&j==0){
+            if(casillas[i+1][j].!descubierta){
+                casillas[i+1][j].pulsar;
+                if(casillas[i+1][j].minasAlrededor==0){
+                   revelarAlrededor(casillas[][],i+1,j);
+                }            
+            }
+            if(casillas[i][j+1].!descubierta){
+                casillas[i][j+1].pulsar;
+                if(casillas[i][j+1].minasAlrededor==0){
+                   revelarAlrededor(casillas[][],i,j+1);
+                }
+            }
+            if(casillas[i+1][j+1].!descubierta){
+                casillas[i+1][j+1].pulsar;
+                if(casillas[i+1][j+1].minasAlrededor==0){
+                   revelarAlrededor(casillas[][],i+1,j+1);
+                }
+            }
+        }
+        
+	 */
+}
 
 
 public void contarAlrededor(Casilla casillas[][])
