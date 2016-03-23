@@ -29,8 +29,7 @@ public class VentanaMinas extends JFrame implements Observer {
 	private JPanel menusuperior;
 	private JButton buttonSmiley;
 	
-	public static Juego juego =  new Juego(2);
-	
+	private static Juego juego =  Juego.getInstance();
 	private static Casilla casillas[][] = new Casilla [juego.filas][juego.columnas];
 
 	
@@ -134,6 +133,7 @@ public class VentanaMinas extends JFrame implements Observer {
 		juego.ponerMinas(juego.numMinas,casillas);
 		juego.contarAlrededor(casillas);
 		//juego.finJuego(casillas);
+		System.out.println(juego.nivel);
 		
 	}// fin initialize
 	

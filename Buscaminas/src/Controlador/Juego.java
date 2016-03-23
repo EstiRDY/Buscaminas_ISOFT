@@ -9,8 +9,9 @@ import Vista.VentanaMinas;
 
 public class Juego extends Observable
 
-{
-	public static int nivel;
+{	private static Juego juego = null;
+
+	public static int nivel = 1; //esto hay que quitarlo
 	public static int filas;
 	public static int columnas;
 	public static int numMinas;
@@ -18,7 +19,7 @@ public class Juego extends Observable
 	
 
 
-public Juego(int pNivel)
+	private Juego(int pNivel)
 {	
 	//cargar desde radioButtons
 	int pFilas = 7, pColumnas = 10, pMinas = 10;
@@ -42,7 +43,9 @@ public Juego(int pNivel)
 	/*setChanged();
 	notifyObservers();*/
 }
-
+	public static Juego getInstance(){
+		if (juego == null){juego = new Juego(nivel);}return juego;
+	}
 
 
 
