@@ -30,7 +30,7 @@ public class VentanaMinas extends JFrame implements Observer {
 	private JButton buttonSmiley;
 	
 	private static Juego juego =  Juego.getInstance();
-	private static Casilla casillas[][] = new Casilla [juego.filas][juego.columnas];
+	//private static Casilla casillas[][] = new Casilla [juego.filas][juego.columnas];
 
 	
 	/**
@@ -85,6 +85,7 @@ public class VentanaMinas extends JFrame implements Observer {
 				{	
 					//Juego juegoNuevo = new Juego(1);
 					VentanaMinas nueva = new VentanaMinas();
+					nueva.juego=juego.getInstance();
 					nueva.setVisible(true);
 					VentanaMinas.this.dispose();
 						
@@ -116,24 +117,8 @@ public class VentanaMinas extends JFrame implements Observer {
 		setContentPane(contentPane);
 		contentPane.add(getPanel_1(), BorderLayout.NORTH);
 		
+		juego.hacerMatriz(panelminas);
 		
-		for(int f = 0; f < juego.filas; f++){
-			  for(int c = 0; c < juego.columnas; c++){
-		         casillas[f][c]= new Casilla("num", null);		         
-		         panelminas.add(casillas[f][c]);
-		         //casillas[f][c].setBounds(f*10, c*10, 40, 40);
-		         casillas[f][c].addMouseListener(casillas[f][c].getControlador());
-		         //nuevo setPosicion añadido
-		         casillas[f][c].fila = f;
-		         casillas[f][c].columna = c;
-		        //System.out.println(c); 
-		      }
-		     // System.out.println(f);  
-		 } // fin for
-		juego.ponerMinas(juego.numMinas,casillas);
-		juego.contarAlrededor(casillas);
-		//juego.finJuego(casillas);
-		System.out.println(juego.nivel);
 		
 	}// fin initialize
 	

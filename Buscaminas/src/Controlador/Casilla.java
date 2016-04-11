@@ -63,30 +63,31 @@ public class Casilla extends JButton //extends Observable
 
 	public void pulsar(){
 		//Si no tiene icono
-		if(Casilla.this.getIcon()== null)
-			System.out.println(Casilla.this.fila);
+		if(this.getIcon()== null)
+			System.out.println(this.fila);
 		{
-		if (Casilla.this.minasAlrededor > 0) {
-				Casilla.this.setText(String.valueOf(minasAlrededor));
-				
+		if (minasAlrededor > 0) {
+				setText(String.valueOf(minasAlrededor));	
 		 } 
 		
 		else {
-			Casilla.this.setText("");
-		
+			this.setText("");
 		}
 		 
-		Casilla.this.setBackground(Color.white);
+		this.setBackground(Color.white);
 		//Casilla.this.setFont(font);
-		Casilla.this.esPulsableIzq = false;
-		Casilla.this.esPulsableDer = false;	
+		this.esPulsableIzq = false;
+		this.esPulsableDer = false;	
 		}
  		//Si tiene mina	
-		if(Casilla.this.estaMinada){ 
-			Casilla.this.esPulsableIzq = false;
-			Casilla.this.esPulsableDer = false;
-			Casilla.this.setIcon(mina);
+		if(this.estaMinada){ 
+			this.esPulsableIzq = false;
+			this.esPulsableDer = false;
+			this.setIcon(mina);
 			//Juego.finJuego(casillas);
+		}
+		if(this.minasAlrededor==0){
+			//Juego.revelarAlrededor(casillas, this);
 		}
 	}
 	

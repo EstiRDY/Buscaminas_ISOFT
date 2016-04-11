@@ -4,7 +4,9 @@ import java.util.Observable;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
+import Vista.VentanaAcceso;
 import Vista.VentanaMinas;
 
 public class Juego extends Observable
@@ -15,11 +17,11 @@ public class Juego extends Observable
 	public static int filas;
 	public static int columnas;
 	public static int numMinas;
-	
+	private Casilla[][]casillas;
 	
 
 
-	private Juego(int pNivel)
+	public Juego(int pNivel)
 {	
 	//cargar desde radioButtons
 	int pFilas = 7, pColumnas = 10, pMinas = 10;
@@ -46,7 +48,32 @@ public class Juego extends Observable
 	public static Juego getInstance(){
 		if (juego == null){juego = new Juego(nivel);}return juego;
 	}
-
+	public void setMatriz(Casilla[][]casillas){
+		this.casillas=casillas;
+	}
+	
+	public Casilla[][]hacerMatriz(JPanel jp){
+		Casilla[][]casillas=new Casilla[this.filas][this.columnas];
+		for(int f = 0; f < this.filas; f++){
+			  for(int c = 0; c < this.columnas; c++){
+		         casillas[f][c]= new Casilla("num", null);		         
+		         jp.add(casillas[f][c]);
+		         //casillas[f][c].setBounds(f*10, c*10, 40, 40);
+		         casillas[f][c].addMouseListener(casillas[f][c].getControlador());
+		         //nuevo setPosicion añadido
+		         casillas[f][c].fila = f;
+		         casillas[f][c].columna = c;
+		        //System.out.println(c); 
+		      }
+		     // System.out.println(f);  
+		 } // fin for
+		juego.ponerMinas(juego.numMinas,casillas);
+		juego.contarAlrededor(casillas);
+		//juego.finJuego(casillas);
+		//System.out.println(juego.nivel);
+		setMatriz(casillas);
+		return casillas;
+	}
 
 
 private boolean ganarPartida(Casilla[][]casillas) {
@@ -91,38 +118,31 @@ public static void finJuego (Casilla casillas[][])
 	    }
 	   }
  }
-public static void revelarAlrededor(Casilla casillas[][],Casilla casillaActual){
-	/*
-	 *Tenemos la fila y la columna de la casilla pulsada
-	 *Para la casilla pulsada comprobamos en que posicion del tablero se encuentra
-	 *y en función de la posicion (esquina,lado o central)revelamos las casillas que tiene alrededor
-	 *Además si alguna de las casillas reveladas tampoco tiene minas alrededor
-	 *ejecutará este mismo método de manera recursiva
-	 *int i=casillaActual.fila;
-	 *int j=casillaActual.columna; 
-	 *if(i==0&&j==0){
-            if(casillas[i+1][j].!descubierta){
-                casillas[i+1][j].pulsar;
+public void revelarAlrededor(Casilla casillas[][],Casilla casillaActual){
+	
+	 /*Tenemos la fila y la columna de la casilla pulsada
+	 Para la casilla pulsada comprobamos en que posicion del tablero se encuentra
+	 y en función de la posicion (esquina,lado o central)revelamos las casillas que tiene alrededor
+	 Además si alguna de las casillas reveladas tampoco tiene minas alrededor
+	 ejecutará este mismo método de manera recursiva
+	 int i=casillaActual.fila;
+	 int j=casillaActual.columna; 
+	 if(i==0&&j==0){
+            if(!casillas[i+1][j].descubierta){
+                casillas[i+1][j].pulsar();
                 if(casillas[i+1][j].minasAlrededor==0){
-                   revelarAlrededor(casillas[][],i+1,j);
+                revelarAlrededor(casillas[][],casillas[i+1][j];
+                }
                 }            
             }
-            if(casillas[i][j+1].!descubierta){
-                casillas[i][j+1].pulsar;
-                if(casillas[i][j+1].minasAlrededor==0){
-                   revelarAlrededor(casillas[][],i,j+1);
-                }
+            if(!casillas[i][j+1].descubierta){
+                casillas[i][j+1].pulsar();
             }
-            if(casillas[i+1][j+1].!descubierta){
-                casillas[i+1][j+1].pulsar;
-                if(casillas[i+1][j+1].minasAlrededor==0){
-                   revelarAlrededor(casillas[][],i+1,j+1);
-                }
-            }
+            if(!casillas[i+1][j+1].descubierta){
+                casillas[i+1][j+1].pulsar();
+            }*/
         }
         
-	 */
-}
 
 
 public void contarAlrededor(Casilla casillas[][])
