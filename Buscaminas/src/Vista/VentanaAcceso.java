@@ -158,9 +158,18 @@ public class VentanaAcceso extends JFrame {
 					if (buttonGroup.getSelection()== null)
 						JOptionPane.showMessageDialog(null, "Selecciona una dificultad!");
 					else
-					{		 	
-					
-					 VentanaMinas juego = new VentanaMinas();
+					{	
+					 int niv=0;
+					 if(VentanaAcceso.this.facil.isSelected()){
+						 niv=1;
+					 }
+					 else if(VentanaAcceso.this.intermedio.isSelected()){
+						 niv=2;
+					 }
+					 else{
+						 niv=3;
+					 }
+					 VentanaMinas juego = new VentanaMinas(niv);
 					 juego.setVisible(true);
 					 VentanaAcceso.this.setVisible(false);
 				}
@@ -176,8 +185,6 @@ public class VentanaAcceso extends JFrame {
 			facil = new JRadioButton("F\u00E1cil");
 			buttonGroup.add(facil);
 		}
-		/*if(facil.isSelected()){
-			Juego.nivel = 1;}*/
 		return facil;
 	}
 	private JRadioButton getIntermedio() {
@@ -185,8 +192,6 @@ public class VentanaAcceso extends JFrame {
 			intermedio = new JRadioButton("Intermedio");
 			buttonGroup.add(intermedio);
 		}
-		/*if(intermedio.isSelected()){
-			Juego.nivel = 2;}*/
 		return intermedio;
 	}
 	private JRadioButton getDificil() {
@@ -194,8 +199,6 @@ public class VentanaAcceso extends JFrame {
 			dificil = new JRadioButton("Dif\u00EDcil");
 			buttonGroup.add(dificil);
 		}
-		/*if(dificil.isSelected()){
-			Juego.nivel = 3;}*/
 		return dificil;
 	}
 }//FIN CLASS

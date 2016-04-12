@@ -13,7 +13,7 @@ public class Juego extends Observable
 
 {	private static Juego juego = null;
 
-	public static int nivel = 1; //esto hay que quitarlo
+	public static int nivel;
 	public static int filas;
 	public static int columnas;
 	public static int numMinas;
@@ -45,8 +45,8 @@ public class Juego extends Observable
 	/*setChanged();
 	notifyObservers();*/
 }
-	public static Juego getInstance(){
-		if (juego == null){juego = new Juego(nivel);}return juego;
+	public static Juego getInstance(int pNivel){
+		if (juego == null){juego = new Juego(pNivel);}return juego;
 	}
 	public void setMatriz(Casilla[][]casillas){
 		this.casillas=casillas;
@@ -104,7 +104,6 @@ public static void ponerMinas(int pMinas, Casilla[][]casillas) {
     		casillas[valorFila][valorColumna].estaMinada = true;
     		//casillas[valorFila][valorColumna].setIcon(mina);
     		pMinas--;
-    		//No hace falta incrementar minas porque es un for
     	}
       }
 }

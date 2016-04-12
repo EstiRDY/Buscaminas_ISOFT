@@ -29,9 +29,8 @@ public class VentanaMinas extends JFrame implements Observer {
 	private JPanel menusuperior;
 	private JButton buttonSmiley;
 	
-	private static Juego juego =  Juego.getInstance();
-	//private static Casilla casillas[][] = new Casilla [juego.filas][juego.columnas];
-
+	private static Juego juego;
+	private static int nivel;
 	
 	/**
 	 * Launch the application.
@@ -40,7 +39,7 @@ public class VentanaMinas extends JFrame implements Observer {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaMinas frame = new VentanaMinas();
+					VentanaMinas frame = new VentanaMinas(nivel);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -84,8 +83,8 @@ public class VentanaMinas extends JFrame implements Observer {
 				public void mouseClicked(MouseEvent e) 
 				{	
 					//Juego juegoNuevo = new Juego(1);
-					VentanaMinas nueva = new VentanaMinas();
-					nueva.juego=juego.getInstance();
+					VentanaMinas nueva = new VentanaMinas(nivel);
+					//nueva.juego=juego.getInstance();
 					nueva.setVisible(true);
 					VentanaMinas.this.dispose();
 						
@@ -97,8 +96,10 @@ public class VentanaMinas extends JFrame implements Observer {
 	
 	
 
-	public VentanaMinas() 
+	public VentanaMinas(int pNivel) 
 	{
+	 this.nivel=pNivel;
+	 this.juego=juego.getInstance(pNivel);
 	 initialize();
 	}
 	

@@ -64,7 +64,7 @@ public class Casilla extends JButton //extends Observable
 	public void pulsar(){
 		//Si no tiene icono
 		if(this.getIcon()== null)
-			System.out.println(this.fila);
+			System.out.println("Fila: "+this.fila+" y Columna: "+this.columna);
 		{
 		if (minasAlrededor > 0) {
 				setText(String.valueOf(minasAlrededor));	
