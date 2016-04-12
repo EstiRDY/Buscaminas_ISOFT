@@ -1,4 +1,4 @@
-package Controlador;
+package modelo;
 import java.awt.event.MouseEvent;
 import java.util.Observable;
 import java.util.Random;
@@ -6,6 +6,7 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import Controlador.Casilla;
 import Vista.VentanaAcceso;
 import Vista.VentanaMinas;
 

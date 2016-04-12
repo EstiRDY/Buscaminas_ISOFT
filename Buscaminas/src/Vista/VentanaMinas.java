@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Controlador.Casilla;
-import Controlador.Juego;
+import modelo.Juego;
 
 import java.awt.GridLayout;
 
