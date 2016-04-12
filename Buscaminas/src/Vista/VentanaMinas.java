@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controlador.ControladorJuego;
 import modelo.Juego;
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -96,6 +98,7 @@ public class VentanaMinas extends JFrame implements Observer {
 	{
 	 this.nivel=pNivel;
 	 this.juego=juego.getInstance(pNivel);
+	 this.juego.addControlador();
 	 initialize();
 	}
 	

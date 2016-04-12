@@ -2,18 +2,22 @@ package modelo;
 import java.util.Observable;
 import javax.swing.JPanel;
 import Controlador.Casilla;
+import Controlador.ControladorJuego;
 
 
 public class Juego extends Observable
 
-{	private static Juego juego = null;
-
+{	
+	
+	private static Juego juego;
 	public static int nivel;
 	public static int filas;
 	public static int columnas;
 	public static int numMinas;
 	public static int contadorBanderas;
 	private Casilla[][]casillas;
+	public Casilla casillaActual;
+	private ControladorJuego ctrl;
 	
 
 
@@ -36,9 +40,6 @@ public class Juego extends Observable
 	this.columnas = pColumnas; 
 	this.numMinas = pMinas;
 	
-	//System.out.println(this.filas+","+this.columnas+","+this.nivel);
-	
-	
 }
 	public static Juego getInstance(int pNivel){
 		if (juego == null){juego = new Juego(pNivel);}return juego;
@@ -53,36 +54,20 @@ public class Juego extends Observable
 			  for(int c = 0; c < this.columnas; c++){
 		         casillas[f][c]= new Casilla("num", null);		         
 		         jp.add(casillas[f][c]);
-		         //casillas[f][c].setBounds(f*10, c*10, 40, 40);
-		         casillas[f][c].addMouseListener(casillas[f][c].getControlador());
-		         //nuevo setPosicion añadido
-		         casillas[f][c].fila = f;
-		         casillas[f][c].columna = c;
-		        //System.out.println(c); 
+		          casillas[f][c].addMouseListener(casillas[f][c].getControlador());
+	    	      casillas[f][c].fila = f;
+		          casillas[f][c].columna = c;
+  
 		      }
-		     // System.out.println(f);  
+		  
 		 } // fin for
 		juego.ponerMinas(juego.numMinas,casillas);
 		juego.contarAlrededor(casillas);
 		//juego.finJuego(casillas);
-		//System.out.println(juego.nivel);
 		setMatriz(casillas);
 		return casillas;
 	}
 
-
-private boolean ganarPartida(Casilla[][]casillas) {
-
-    int minasDescubiertas = 0;
-    for (int f = 0; f < filas; f++){
-        for (int c = 0; c < columnas; c++){
-            if (casillas[f][c].descubierta == true){
-                minasDescubiertas++;}}}
-    if (minasDescubiertas == numMinas)
-        {return true;}
-    else
-        {return false;}
-}
 
 public static void ponerMinas(int pMinas, Casilla[][]casillas) {
     pMinas = Juego.numMinas;
@@ -102,16 +87,7 @@ public static void ponerMinas(int pMinas, Casilla[][]casillas) {
     	}
       }
 }
-public static void finJuego (Casilla casillas[][])
-{	
-	for(int i=0;i<Juego.filas;i++){
-	    for(int j=0;j<Juego.columnas;j++){
-	    	if(casillas[i][j].estaMinada==true&&casillas[i][j].descubierta==false){
-	    	casillas[i][j].pulsar();
-	    	}
-	    }
-	   }
- }
+
 public void revelarAlrededor(Casilla casillas[][],Casilla casillaActual){
 	
 	 /*Tenemos la fila y la columna de la casilla pulsada
@@ -294,6 +270,19 @@ public void contarAlrededor(Casilla casillas[][])
         }
         }
         }
+
+
+	public Casilla[][] getCasillas() {
+		return this.casillas;
+	}
+	public ControladorJuego addControlador() {
+		if (ctrl == null)
+		{
+			ctrl = new ControladorJuego(juego, casillas);
+		}
+		return ctrl;
+		
+	}
 
 	
 	}
