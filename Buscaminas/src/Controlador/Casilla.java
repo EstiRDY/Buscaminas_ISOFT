@@ -1,23 +1,11 @@
 package Controlador;
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
-import Vista.VentanaMinas;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 
 
 
@@ -49,14 +37,7 @@ public class Casilla extends JButton //extends Observable
 	public int getFila() {
 		return this.fila;
 	}
-	public void addListener(InvalidationListener listener) {// TODO Auto-generated method stub
 	
-	}
-
-	public void removeListener(InvalidationListener listener) {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 	public void pulsar(){
@@ -102,16 +83,19 @@ public class Casilla extends JButton //extends Observable
 			//Pulsar derecho
 			if (e.getButton() == MouseEvent.BUTTON3 && Casilla.this.esPulsableDer == true)
 			{
+				
 				if(Casilla.this.getIcon()==null){
 				
 				Casilla.this.setIcon(bandera);
 				Casilla.this.esPulsableIzq = false;
+
 				}
 				
 				else
 				{
 					Casilla.this.setIcon(null);
 					Casilla.this.esPulsableIzq = true;
+
 				}
 			} }
 

@@ -4,14 +4,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import Controlador.Casilla;
 import modelo.Juego;
-
 import java.awt.GridLayout;
-
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.MouseEvent;
 import java.util.Observable;

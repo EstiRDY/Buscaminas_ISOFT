@@ -1,14 +1,8 @@
 package modelo;
-import java.awt.event.MouseEvent;
 import java.util.Observable;
-import java.util.Random;
-
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-
 import Controlador.Casilla;
-import Vista.VentanaAcceso;
-import Vista.VentanaMinas;
+
 
 public class Juego extends Observable
 
@@ -18,6 +12,7 @@ public class Juego extends Observable
 	public static int filas;
 	public static int columnas;
 	public static int numMinas;
+	public static int contadorBanderas;
 	private Casilla[][]casillas;
 	
 
@@ -43,8 +38,7 @@ public class Juego extends Observable
 	
 	//System.out.println(this.filas+","+this.columnas+","+this.nivel);
 	
-	/*setChanged();
-	notifyObservers();*/
+	
 }
 	public static Juego getInstance(int pNivel){
 		if (juego == null){juego = new Juego(pNivel);}return juego;
