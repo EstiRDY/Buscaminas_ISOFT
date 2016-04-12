@@ -69,16 +69,13 @@ public class Juego extends Observable
 	}
 
 
-public static void ponerMinas(int pMinas, Casilla[][]casillas) {
-    pMinas = Juego.numMinas;
+public void ponerMinas(int pMinas, Casilla[][]casillas) {
+    pMinas = getInstance(nivel).numMinas;
     while(pMinas>0) 
      //coger una casilla[i][j] random, if notienemina, ponermina
      {
-    	int valorFila = (int)(Math.random()*(Juego.filas));  
-    	int valorColumna = (int)(Math.random()*(Juego.columnas)); 
-    	//System.out.println(valorFila);
-    	//System.out.println(valorColumna);
-    	//ImageIcon mina = new ImageIcon("img/mina2.jpg");
+    	int valorFila = (int)(Math.random()*(getInstance(nivel).filas));  
+    	int valorColumna = (int)(Math.random()*(getInstance(nivel).columnas)); 
     	if(casillas[valorFila][valorColumna].estaMinada == false)
     	{
     		casillas[valorFila][valorColumna].estaMinada = true;
@@ -88,29 +85,49 @@ public static void ponerMinas(int pMinas, Casilla[][]casillas) {
       }
 }
 
-public void revelarAlrededor(Casilla casillas[][],Casilla casillaActual){
+public void revelarAlrededor(){
+	juego.getInstance(nivel);
+	Casilla[][] matriz = this.casillas;
+	Casilla actual = this.casillaActual;
 	
+	 
 	 /*Tenemos la fila y la columna de la casilla pulsada
 	 Para la casilla pulsada comprobamos en que posicion del tablero se encuentra
 	 y en función de la posicion (esquina,lado o central)revelamos las casillas que tiene alrededor
 	 Además si alguna de las casillas reveladas tampoco tiene minas alrededor
-	 ejecutará este mismo método de manera recursiva
+	 ejecutará este mismo método de manera recursiva*/
+	
 	 int i=casillaActual.fila;
 	 int j=casillaActual.columna; 
-	 if(i==0&&j==0){
-            if(!casillas[i+1][j].descubierta){
-                casillas[i+1][j].pulsar();
-                if(casillas[i+1][j].minasAlrededor==0){
-                revelarAlrededor(casillas[][],casillas[i+1][j];
-                }
-                }            
-            }
-            if(!casillas[i][j+1].descubierta){
-                casillas[i][j+1].pulsar();
-            }
-            if(!casillas[i+1][j+1].descubierta){
-                casillas[i+1][j+1].pulsar();
-            }*/
+	 
+	 if(j != 0 && j != this.columnas-1 && i != 0 && i != this.filas-1){
+         if(!casillas[i-1][j-1].descubierta){
+             casillas[i][j].pulsar();
+         }
+         if(!casillas[i-1][j].descubierta){
+             casillas[i][j].pulsar();
+         }
+         if(!casillas[i-1][j+1].descubierta){
+             casillas[i][j].pulsar();
+         }
+         if(!casillas[i][j+1].descubierta){
+             casillas[i][j].pulsar();
+         }
+         if(!casillas[i+1][j+1].descubierta){
+             casillas[i][j].pulsar();
+         }
+         if(!casillas[i+1][j].descubierta){
+             casillas[i][j].pulsar();
+         }
+         if(!casillas[i+1][j-1].descubierta){
+             casillas[i][j].pulsar();
+         }
+         if(!casillas[i][j-1].descubierta){
+             casillas[i][j].pulsar();
+         }
+     }
+     
+     
         }
         
 
@@ -275,11 +292,14 @@ public void contarAlrededor(Casilla casillas[][])
 	public Casilla[][] getCasillas() {
 		return this.casillas;
 	}
+	
 	public ControladorJuego addControlador() {
 		if (ctrl == null)
 		{
-			ctrl = new ControladorJuego(juego, casillas);
+			ctrl = new ControladorJuego(casillas);
 		}
+		System.out.println("controlador añadido");
+		System.out.println(ctrl);
 		return ctrl;
 		
 	}

@@ -6,15 +6,15 @@ import java.util.Observable;
 import java.util.Observer;
 import modelo.Juego;
 
-public class ControladorJuego implements Observer, MouseListener {
+public class ControladorJuego implements MouseListener {
 	
 	private Casilla[][]casillas;
 	private static Juego juego;
 	
 	
-	public ControladorJuego(Juego juego, Casilla[][] casillas)
+	public ControladorJuego(Casilla[][] casillas)
 	{
-		this.juego = juego;
+		this.juego = juego.getInstance(0);
 		this.casillas = casillas;
 	}
 
@@ -45,10 +45,9 @@ public class ControladorJuego implements Observer, MouseListener {
 	}
 	
 	
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
-	}
+	/*public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub	
+	}*/
 
 	public void mouseClicked(MouseEvent e) {
 		if (e.getButton()== MouseEvent.BUTTON1 )
@@ -78,8 +77,6 @@ public class ControladorJuego implements Observer, MouseListener {
 		// TODO Auto-generated method stub
 		
 	}
-
-	
 
 	//Contador minas y contador banderas
 	//Timer = puntuacion

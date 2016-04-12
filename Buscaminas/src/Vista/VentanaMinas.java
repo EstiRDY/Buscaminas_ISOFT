@@ -2,10 +2,9 @@ package Vista;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import Controlador.ControladorJuego;
 import modelo.Juego;
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -20,7 +19,6 @@ public class VentanaMinas extends JFrame implements Observer {
 
 	
 	private JPanel contentPane;
-	
 	private JPanel panelminas;
 	private JPanel menusuperior;
 	private JButton buttonSmiley;
@@ -98,7 +96,7 @@ public class VentanaMinas extends JFrame implements Observer {
 	{
 	 this.nivel=pNivel;
 	 this.juego=juego.getInstance(pNivel);
-	 this.juego.addControlador();
+	 this.juego.addControlador(); 
 	 initialize();
 	}
 	
