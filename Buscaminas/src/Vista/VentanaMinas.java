@@ -82,12 +82,14 @@ public class VentanaMinas extends JFrame implements Observer {
 				@Override
 				public void mouseClicked(MouseEvent e) 
 				{	
-					//Juego juegoNuevo = new Juego(1);
-					VentanaMinas nueva = new VentanaMinas(nivel);
-					//nueva.juego=juego.getInstance();
-					nueva.setVisible(true);
-					VentanaMinas.this.dispose();
-						
+					if (e.getButton()== MouseEvent.BUTTON1)
+				{	
+						//Juego juegoNuevo = new Juego(1);
+						VentanaMinas nueva = new VentanaMinas(nivel);
+						//nueva.juego=juego.getInstance();
+						nueva.setVisible(true);
+						VentanaMinas.this.dispose();
+					}	
 				}
 			});
 		}

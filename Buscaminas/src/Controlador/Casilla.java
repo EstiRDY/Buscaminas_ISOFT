@@ -36,8 +36,6 @@ public class Casilla extends JButton //extends Observable
 	private ImageIcon bandera = new ImageIcon("img/bandera.jpg");
 	private ImageIcon mina = new ImageIcon("img/mina2.jpg");
 
-
-
 	public Casilla(String text, Icon icon) {
 		super();
 		/*setChanged();
