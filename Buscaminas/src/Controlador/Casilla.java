@@ -68,7 +68,11 @@ public class Casilla extends JButton //extends Observable
 			this.esPulsableIzq = false;
 			this.esPulsableDer = false;
 			this.setIcon(mina);
-			//Juego.finJuego(casillas);
+			Juego juego = Juego.getInstance(0);
+			ControladorJuego ctrl = juego.addControlador();
+			Casilla[][] matriz = juego.getCasillas(); //mirar
+			System.out.println(ctrl); //correcto!
+			ctrl.finJuego(matriz);
 		}
 		
 	}

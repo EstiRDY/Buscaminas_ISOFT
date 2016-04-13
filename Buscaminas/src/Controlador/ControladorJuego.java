@@ -1,12 +1,13 @@
 package Controlador;
 
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Observable;
 import java.util.Observer;
 import modelo.Juego;
 
-public class ControladorJuego implements MouseListener {
+public class ControladorJuego implements MouseListener { //y observer! 
 	
 	private Casilla[][]casillas;
 	private static Juego juego;
@@ -33,15 +34,20 @@ public class ControladorJuego implements MouseListener {
 	
 	
 	public static void finJuego (Casilla casillas[][])
-	{	if(casillas[juego.casillaActual.fila][juego.casillaActual.columna].estaMinada){
+	{	//No es necesario "if está minada" porque solo lo invoca un click en una mina
 		for(int i=0;i<Juego.filas;i++){
-		    for(int j=0;j<Juego.columnas;j++){
-		    	if(casillas[i][j].estaMinada==true&&casillas[i][j].descubierta==false){
-		    	casillas[i][j].pulsar();
+		    for(int j=0;j<Juego.columnas;j++){ 
+		    	//el bucle lo hace bien,recorre todas las casillas
+		    	if(casillas[i][j].estaMinada==true&&casillas[i][j].descubierta==false)
+		    	{
+		    		casillas[i][j].descubierta=true;
+		    		//casillas[i][j].setBackground(Color.red); total no se ve...
+		    		casillas[i][j].pulsar();
 		    	}
 		    }
 		   }
-	 }
+
+		//System.out.println("game over :(");
 	}
 	
 	
