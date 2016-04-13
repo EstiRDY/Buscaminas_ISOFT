@@ -70,7 +70,7 @@ public class Casilla extends JButton //extends Observable
             this.esPulsableIzq = false;
             this.esPulsableDer = false;
             this.setIcon(mina);
-            //Juego.finJuego(casillas);
+            ControladorJuego.finJuego(Juego.getInstance(0).getCasillas());
         }
          
     }
