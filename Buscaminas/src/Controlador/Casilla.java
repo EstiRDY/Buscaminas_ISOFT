@@ -179,7 +179,9 @@ public class Casilla extends JButton //extends Observable
                     Casilla.this.esPulsableIzq = true;
                     Casilla.this.banderaPuesta = false;
                 }
-            } }
+               
+            } 
+         ControladorJuego.ganarPartida(Juego.getInstance(0).getCasillas(), Juego.getInstance(0) );}
  
         public void mousePressed(MouseEvent e) {
             // TODO Auto-generated method stub

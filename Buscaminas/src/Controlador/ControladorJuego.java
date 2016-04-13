@@ -19,7 +19,7 @@ public class ControladorJuego implements MouseListener { //y observer!
 		this.casillas = casillas;
 	}
 
-	private boolean ganarPartida(Casilla[][]casillas, Juego juego) {
+	public static boolean ganarPartida(Casilla[][]casillas, Juego juego) {
 
 	    int casillasTotales = juego.filas*juego.columnas;
 	    for (int f = 0; f < juego.filas; f++){
@@ -27,7 +27,8 @@ public class ControladorJuego implements MouseListener { //y observer!
 	            if (casillas[f][c].descubierta == true){
 	                casillasTotales--;}}}
 	    if (casillasTotales == juego.numMinas)
-	        {return true;}
+	        {System.out.println("BIEEEEEEEEEEEEEEEEEEEEEN");
+	    	return true;}
 	    else
 	        {return false;}
 	}
