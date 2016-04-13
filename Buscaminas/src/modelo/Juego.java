@@ -1,5 +1,7 @@
 package modelo;
 import java.util.Observable;
+
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import Controlador.Casilla;
 import Controlador.ControladorJuego;
@@ -18,6 +20,7 @@ public class Juego extends Observable
 	private Casilla[][]casillas;
 	public Casilla casillaActual;
 	private ControladorJuego ctrl;
+	private ImageIcon mina = new ImageIcon("img/mina2.jpg");
 	
 
 
@@ -79,6 +82,7 @@ public void ponerMinas(int pMinas, Casilla[][]casillas) {
     	if(casillas[valorFila][valorColumna].estaMinada == false)
     	{
     		casillas[valorFila][valorColumna].estaMinada = true;
+	        casillas[valorFila][valorColumna].setIcon(mina);
     		//casillas[valorFila][valorColumna].setIcon(mina);
     		pMinas--;
     	}

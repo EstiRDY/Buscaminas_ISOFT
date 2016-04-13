@@ -46,7 +46,7 @@ public class Casilla extends JButton //extends Observable
     public void pulsar(){
         //Si no tiene icono
         this.descubierta=true;
-        if(this.getIcon()== null && this.estaMinada == false)
+        if(this.getIcon()!= bandera && this.estaMinada == false)
              
         {
             if (minasAlrededor > 0) {
