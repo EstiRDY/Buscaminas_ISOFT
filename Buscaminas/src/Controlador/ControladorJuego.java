@@ -5,6 +5,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Observable;
 import java.util.Observer;
+
+import Vista.PartidaGanada;
+import Vista.PartidaPerdida;
+import Vista.VentanaAcceso;
+import Vista.VentanaMinas;
 import modelo.Juego;
 
 public class ControladorJuego implements MouseListener { //y observer! 
@@ -28,6 +33,9 @@ public class ControladorJuego implements MouseListener { //y observer!
 	                casillasTotales--;}}}
 	    if (casillasTotales == juego.numMinas)
 	        {System.out.println("BIEEEEEEEEEEEEEEEEEEEEEN");
+			 PartidaGanada bien = new PartidaGanada();
+			 bien.setVisible(true);
+	        
 	    	return true;}
 	    else
 	        {return false;}
@@ -35,20 +43,23 @@ public class ControladorJuego implements MouseListener { //y observer!
 	
 	
 	public static void finJuego (Casilla casillas[][])
-	{	//No es necesario "if está minada" porque solo lo invoca un click en una mina
+	{	
 		for(int i=0;i<Juego.filas;i++){
-		    for(int j=0;j<Juego.columnas;j++){ 
-		    	//el bucle lo hace bien,recorre todas las casillas
+		    for(int j=0;j<Juego.columnas;j++){ 	    	
 		    	if(casillas[i][j].estaMinada==true&&casillas[i][j].descubierta==false)
 		    	{
 		    		casillas[i][j].descubierta=true;
-		    		//casillas[i][j].setBackground(Color.red); total no se ve...
 		    		casillas[i][j].pulsar();
 		    	}
+//Este cambio es importante y está bien
+		    	casillas[i][j].esPulsableIzq=false;
+		    	casillas[i][j].esPulsableDer=false;
 		    }
 		   }
 
-		//System.out.println("game over :(");
+		System.out.println("game over :(");  //ESTO LO HACE MUCHAS VECES!
+		// PartidaPerdida mal = new PartidaPerdida();
+		// mal.setVisible(true);
 	}
 	
 	

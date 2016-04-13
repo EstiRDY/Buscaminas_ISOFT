@@ -4,10 +4,12 @@ import java.util.Observable;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import Controlador.Casilla;
+import Controlador.ControladorContador;
 import Controlador.ControladorJuego;
+import Vista.ContadorMinas;
 
 
-public class Juego extends Observable
+public class Juego
 
 {	
 	
@@ -16,12 +18,10 @@ public class Juego extends Observable
 	public static int filas;
 	public static int columnas;
 	public static int numMinas;
-	public static int contadorBanderas;
 	private Casilla[][]casillas;
 	public Casilla casillaActual;
 	private ControladorJuego ctrl;
-	private ImageIcon mina = new ImageIcon("img/mina2.jpg");
-	
+
 
 
 	public Juego(int pNivel)
@@ -82,8 +82,8 @@ public void ponerMinas(int pMinas, Casilla[][]casillas) {
     	if(casillas[valorFila][valorColumna].estaMinada == false)
     	{
     		casillas[valorFila][valorColumna].estaMinada = true;
-	        casillas[valorFila][valorColumna].setIcon(mina);
-    		//casillas[valorFila][valorColumna].setIcon(mina);
+	        //casillas[valorFila][valorColumna].setIcon(mina);
+
     		pMinas--;
     	}
       }

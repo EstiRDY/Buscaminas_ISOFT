@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import modelo.Juego;
 import java.awt.GridLayout;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.MouseEvent;
 import java.util.Observable;
@@ -25,6 +27,12 @@ public class VentanaMinas extends JFrame implements Observer {
 	
 	private static Juego juego;
 	private static int nivel;
+	
+	public static int getNivel() {
+		return nivel;
+	}
+
+	private ImageIcon smiley = new ImageIcon("img/smiley.jpg");
 	
 	/**
 	 * Launch the application.
@@ -70,7 +78,7 @@ public class VentanaMinas extends JFrame implements Observer {
 	private JButton getButton() 
 	{
 		if (buttonSmiley == null) {
-			buttonSmiley = new JButton(":)");
+			buttonSmiley = new JButton("");
 			buttonSmiley.addMouseListener(new MouseAdapter() 
 			{
 				@Override
@@ -87,6 +95,7 @@ public class VentanaMinas extends JFrame implements Observer {
 				}
 			});
 		}
+		buttonSmiley.setIcon(smiley);
 		return buttonSmiley;
 	}
 	

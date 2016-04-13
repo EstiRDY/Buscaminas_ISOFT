@@ -5,7 +5,8 @@ import java.awt.event.MouseListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
- 
+
+import Vista.ContadorMinas;
 import modelo.Juego;
  
  
@@ -24,9 +25,14 @@ public class Casilla extends JButton //extends Observable
     public int columna;
     public int fila;
     MouseEvent e;
+    
     private ImageIcon bandera = new ImageIcon("img/bandera.jpg");
     private ImageIcon mina = new ImageIcon("img/mina2.jpg");
- 
+	
+	ControladorContador cc = new ControladorContador();
+	ContadorMinas cm = new ContadorMinas(cc);
+	
+
     public Casilla(String text, Icon icon) {
         super();
         /*setChanged();
@@ -77,76 +83,22 @@ public class Casilla extends JButton //extends Observable
 
      
     public void revelarAlrededor(int pFila, int pColumna){
-        Juego juego = Juego.getInstance(0);
-        Casilla[][] matriz = juego.getCasillas();
-        // casilla superior izquierda
-        if(pFila == 0 && pColumna == 0){
-            if(!matriz[pFila][pColumna+1].descubierta)matriz[pFila][pColumna+1].pulsar();
-            if(!matriz[pFila+1][pColumna].descubierta)matriz[pFila+1][pColumna].pulsar();
-            if(!matriz[pFila+1][pColumna+1].descubierta)matriz[pFila+1][pColumna+1].pulsar();
-        }
-        // casilla superior derecha
-        if(pFila == 0 && pColumna== juego.columnas-1){
-            if(!matriz[pFila][pColumna-1].descubierta)matriz[pFila][pColumna-1].pulsar();
-            if(!matriz[pFila+1][pColumna-1].descubierta)matriz[pFila+1][pColumna-1].pulsar();
-            if(!matriz[pFila+1][pColumna].descubierta)matriz[pFila+1][pColumna].pulsar();
-        }
-        // casilla inferior izquierda
-        if(pFila == juego.filas-1 && pColumna == 0){
-            if(!matriz[pFila-1][pColumna].descubierta)matriz[pFila-1][pColumna].pulsar();
-            if(!matriz[pFila-1][pColumna+1].descubierta)matriz[pFila-1][pColumna+1].pulsar();
-            if(!matriz[pFila][pColumna+1].descubierta)matriz[pFila][pColumna+1].pulsar();
-        }
-        // casilla inferior derecha
-        if(pFila == juego.filas-1 && pColumna == juego.columnas-1){
-            if(!matriz[pFila-1][pColumna-1].descubierta)matriz[pFila-1][pColumna-1].pulsar();
-            if(!matriz[pFila-1][pColumna].descubierta)matriz[pFila-1][pColumna].pulsar();
-            if(!matriz[pFila][pColumna-1].descubierta)matriz[pFila][pColumna-1].pulsar();
-        }
-        // arriba (menos las 2 esquinas)
-        if(pFila==0&&pColumna!=0&&pColumna!=juego.columnas-1){
-            if(!matriz[pFila][pColumna-1].descubierta)matriz[pFila][pColumna-1].pulsar();
-            if(!matriz[pFila][pColumna+1].descubierta)matriz[pFila][pColumna+1].pulsar();
-            if(!matriz[pFila+1][pColumna-1].descubierta)matriz[pFila+1][pColumna-1].pulsar();
-            if(!matriz[pFila+1][pColumna].descubierta)matriz[pFila+1][pColumna].pulsar();
-            if(!matriz[pFila+1][pColumna+1].descubierta)matriz[pFila+1][pColumna+1].pulsar();
-        }
-        // abajo (menos las 2 esquinas)
-        if(pFila == juego.filas-1 && pColumna != 0 && pColumna != juego.columnas-1){
-            if(!matriz[pFila-1][pColumna-1].descubierta)matriz[pFila-1][pColumna-1].pulsar();
-            if(!matriz[pFila-1][pColumna].descubierta)matriz[pFila-1][pColumna].pulsar();
-            if(!matriz[pFila-1][pColumna+1].descubierta)matriz[pFila-1][pColumna+1].pulsar();
-            if(!matriz[pFila][pColumna-1].descubierta)matriz[pFila][pColumna-1].pulsar();
-            if(!matriz[pFila][pColumna+1].descubierta)matriz[pFila][pColumna+1].pulsar();
-        }
-        // izquierda (menos las 2 esquinas)
-        if(pColumna == 0 && pFila != 0 && pFila != juego.filas-1){
-            if(!matriz[pFila-1][pColumna].descubierta)matriz[pFila-1][pColumna].pulsar();
-            if(!matriz[pFila-1][pColumna+1].descubierta)matriz[pFila-1][pColumna+1].pulsar();
-            if(!matriz[pFila][pColumna+1].descubierta)matriz[pFila][pColumna+1].pulsar();
-            if(!matriz[pFila+1][pColumna].descubierta)matriz[pFila+1][pColumna].pulsar();
-            if(!matriz[pFila+1][pColumna+1].descubierta)matriz[pFila+1][pColumna+1].pulsar();
-        }
-        // derecha (menos las 2 esquinas)
-        if(pColumna == juego.columnas-1 && pFila != 0 && pFila != juego.filas-1){
-            if(!matriz[pFila-1][pColumna-1].descubierta)matriz[pFila-1][pColumna-1].pulsar();
-            if(!matriz[pFila-1][pColumna].descubierta)matriz[pFila-1][pColumna].pulsar();
-            if(!matriz[pFila][pColumna-1].descubierta)matriz[pFila][pColumna-1].pulsar();
-            if(!matriz[pFila+1][pColumna-1].descubierta)matriz[pFila+1][pColumna-1].pulsar();
-            if(!matriz[pFila+1][pColumna].descubierta)matriz[pFila+1][pColumna].pulsar();
-        }
-         
-        if(pColumna != 0 && pColumna != juego.columnas-1 && pFila != 0 && pFila != juego.filas-1){// casillas del centro (menos las de los bordes)
-            if(!matriz[pFila-1][pColumna-1].descubierta)matriz[pFila-1][pColumna-1].pulsar();
-            if(!matriz[pFila-1][pColumna].descubierta)matriz[pFila-1][pColumna].pulsar();
-            if(!matriz[pFila-1][pColumna+1].descubierta)matriz[pFila-1][pColumna+1].pulsar();
-            if(!matriz[pFila][pColumna-1].descubierta)matriz[pFila][pColumna-1].pulsar();
-            if(!matriz[pFila][pColumna+1].descubierta)matriz[pFila][pColumna+1].pulsar();
-            if(!matriz[pFila+1][pColumna-1].descubierta)matriz[pFila+1][pColumna-1].pulsar();
-            if(!matriz[pFila+1][pColumna].descubierta)matriz[pFila+1][pColumna].pulsar();
-            if(!matriz[pFila+1][pColumna+1].descubierta)matriz[pFila+1][pColumna+1].pulsar();
-             
-        }
+    	
+          Juego juego = Juego.getInstance(0);  //FUNCIONA con cualquier nivel!
+            Casilla[][] matriz = juego.getCasillas();
+            for (int f = pFila-1; f <= pFila+1; f++){
+                for (int c = pColumna-1; c <= pColumna+1; c++){
+                    if(f>=0 && c>=0 && f<juego.filas && c<juego.columnas){      
+                    if (matriz[f][c].esPulsableIzq && !matriz[f][c].descubierta){
+                        matriz[f][c].pulsar(); 
+                        if (matriz[f][c].minasAlrededor==0){
+                        matriz[f][c].revelarAlrededor(f,c);
+                    }
+                    }
+                    }
+                    }
+            }
+        
     }
          
  
@@ -154,7 +106,8 @@ public class Casilla extends JButton //extends Observable
      
     private class Controlador implements MouseListener{
  
-         
+    	int contadorBanderas = 0;
+    	
         public void mouseClicked(MouseEvent e) {//Si no ha sido pulsadaIzq
             if (e.getButton()== MouseEvent.BUTTON1 && Casilla.this.esPulsableIzq == true )
             {   
@@ -164,13 +117,19 @@ public class Casilla extends JButton //extends Observable
              
             //Pulsar derecho
             if (e.getButton() == MouseEvent.BUTTON3 && Casilla.this.esPulsableDer == true)
-            {
-                 
+            { 	//Cada vez que pulso derecho, hacer cambios en el contador(suma o resta)
+   
+            	System.out.println(contadorBanderas);
+            	
                 if(Casilla.this.getIcon()== null){
                  
-                Casilla.this.setIcon(bandera);
-                Casilla.this.esPulsableIzq = false;
-                Casilla.this.banderaPuesta = true;
+	                Casilla.this.setIcon(bandera);
+	                Casilla.this.esPulsableIzq = false;
+	                Casilla.this.banderaPuesta = true;
+	                contadorBanderas--;
+	                cc.setCounter(contadorBanderas);
+	                this.update(cc, cm);
+	
                 }
                  
                 else
@@ -178,12 +137,20 @@ public class Casilla extends JButton //extends Observable
                     Casilla.this.setIcon(null);
                     Casilla.this.esPulsableIzq = true;
                     Casilla.this.banderaPuesta = false;
+                    contadorBanderas++;
+	                cc.setCounter(contadorBanderas);
+	                this.update(cc, cm);
                 }
                
             } 
          ControladorJuego.ganarPartida(Juego.getInstance(0).getCasillas(), Juego.getInstance(0) );}
  
-        public void mousePressed(MouseEvent e) {
+        private void update(ControladorContador cc, ContadorMinas cm) {
+        	System.out.println(contadorBanderas);
+			
+		}
+
+		public void mousePressed(MouseEvent e) {
             // TODO Auto-generated method stub
              
         }
