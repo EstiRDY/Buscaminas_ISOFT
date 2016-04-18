@@ -22,7 +22,7 @@ public class VentanaAcceso extends JFrame {
 	private JPanel contentPane;
 	private JPanel panel;
 	private JLabel lblIntroduceTuNombre;
-	private JTextField nombre;
+	private static JTextField nombre;
 	private JLabel lblEligeNivelDe;
 	private JButton btnAceptar;
 	private JRadioButton facil;
@@ -121,7 +121,7 @@ public class VentanaAcceso extends JFrame {
 	}
 	
 	//TEXTFIELD NOMBREUSUARIO
-	private JTextField getNombre() {
+	public static JTextField getNombre() {
 		if (nombre == null) 
 		{
 			nombre = new JTextField();
@@ -129,9 +129,15 @@ public class VentanaAcceso extends JFrame {
 		}
 		else 
 		{
-			nombre.setText("desconocido");
+			if(nombre.getText().equals("") )
+			{
+				nombre.setText("desconocido");
+			}
+			else
+			{
+				nombre.getText();
+			}
 		}
-		//System.out.println(nombre.getText());
 		return nombre;
 	}
 	private JLabel getLblEligeNivelDe() {
@@ -162,9 +168,11 @@ public class VentanaAcceso extends JFrame {
 					 else{
 						 niv=3;
 					 }
+					 
 					 VentanaMinas juego = new VentanaMinas(niv);
 					 juego.setVisible(true);
 					 VentanaAcceso.this.setVisible(false);
+					 
 				}
 				}}
 			);

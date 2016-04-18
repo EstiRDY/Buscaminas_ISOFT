@@ -1,12 +1,15 @@
 package Vista;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.GridBagConstraints;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import modelo.Juego;
 import java.awt.GridLayout;
+import java.awt.Insets;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -24,10 +27,26 @@ public class VentanaMinas extends JFrame implements Observer {
 	private JPanel panelminas;
 	private JPanel menusuperior;
 	private JButton buttonSmiley;
+	private static JLabel contadorMinas;
 	
 	private static Juego juego;
 	private static int nivel;
 	
+    
+    
+    private static ImageIcon bandera = new ImageIcon("img/bandera.jpg");
+	private static ImageIcon mina = new ImageIcon("img/mina2.jpg");
+    
+    public static ImageIcon getBandera() {
+		return bandera;
+	}
+
+
+    
+	public static ImageIcon getMina() {
+		return mina;
+	}
+
 	public static int getNivel() {
 		return nivel;
 	}
@@ -70,8 +89,20 @@ public class VentanaMinas extends JFrame implements Observer {
 		if (menusuperior == null) {
 			menusuperior = new JPanel();
 			menusuperior.add(getButton());
+			
+			GridBagConstraints gbc_lblIntroduceTuNombre = new GridBagConstraints();
+			gbc_lblIntroduceTuNombre.insets = new Insets(0, 0, 5, 0);
+			gbc_lblIntroduceTuNombre.gridx = 1;
+			gbc_lblIntroduceTuNombre.gridy = 2;
+			menusuperior.add(getcontadorMinas(), gbc_lblIntroduceTuNombre);
 		}
 		return menusuperior;
+	}
+	public static JLabel getcontadorMinas() {
+		if (contadorMinas == null) {
+			contadorMinas = new JLabel("Minas");
+		}
+		return contadorMinas;
 	}
 	
 	//BOTÓN SMILEY REINICIO

@@ -7,6 +7,8 @@ import Controlador.ControladorContador;
 public class ContadorMinas implements Observer {
 	
 	private ControladorContador controlador;
+	ControladorContador cc = new ControladorContador();
+	ContadorMinas cm = new ContadorMinas(cc);
 	
 	public ContadorMinas(ControladorContador pControl)
 	{
@@ -16,7 +18,10 @@ public class ContadorMinas implements Observer {
 
 	public void update(Observable o, Object arg) {
 		System.out.println(controlador.getCounter());
-		
+		int contadorBanderas = 0;
+		cc.setCounter(contadorBanderas );
+		this.update(cc,cm);
+
 	}
 
 }

@@ -5,17 +5,19 @@ import java.awt.event.MouseListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
 import Vista.ContadorMinas;
+import Vista.VentanaMinas;
 import modelo.Juego;
  
  
  
  
-public class Casilla extends JButton //extends Observable
+public class Casilla extends JButton
 {
  
-    public boolean descubierta = false;
+
     public boolean estaMinada = false;
     private Controlador controlador; 
     public int minasAlrededor;
@@ -26,17 +28,14 @@ public class Casilla extends JButton //extends Observable
     public int fila;
     MouseEvent e;
     
-    private ImageIcon bandera = new ImageIcon("img/bandera.jpg");
-    private ImageIcon mina = new ImageIcon("img/mina2.jpg");
+   ImageIcon bandera =  VentanaMinas.getBandera();
+   ImageIcon mina = VentanaMinas.getMina();
+ 
 	
-	ControladorContador cc = new ControladorContador();
-	ContadorMinas cm = new ContadorMinas(cc);
 	
 
     public Casilla(String text, Icon icon) {
         super();
-        /*setChanged();
-        notifyObservers();*/
          
     }
     public int getColumna() {
@@ -46,12 +45,13 @@ public class Casilla extends JButton //extends Observable
     public int getFila() {
         return this.fila;
     }
-     
- 
+
  
     public void pulsar(){
         //Si no tiene icono
-        this.descubierta=true;
+        
+        this.esPulsableIzq = false;
+        this.esPulsableDer = false; 
         if(this.getIcon()!= bandera && this.estaMinada == false)
              
         {
@@ -67,8 +67,7 @@ public class Casilla extends JButton //extends Observable
               
             this.setBackground(Color.white);
             //Casilla.this.setFont(font);
-            this.esPulsableIzq = false;
-            this.esPulsableDer = false; 
+
         }
          
         //Si tiene icono mina   
@@ -80,7 +79,13 @@ public class Casilla extends JButton //extends Observable
         }
          
     }
+    public void revelarMina(){
 
+    	            this.esPulsableIzq = false;
+    	            this.esPulsableDer = false;
+    	            this.setIcon(mina);
+    	        
+    }
      
     public void revelarAlrededor(int pFila, int pColumna){
     	
@@ -89,7 +94,7 @@ public class Casilla extends JButton //extends Observable
             for (int f = pFila-1; f <= pFila+1; f++){
                 for (int c = pColumna-1; c <= pColumna+1; c++){
                     if(f>=0 && c>=0 && f<juego.filas && c<juego.columnas){      
-                    if (matriz[f][c].esPulsableIzq && !matriz[f][c].descubierta){
+                    if (matriz[f][c].esPulsableIzq ){
                         matriz[f][c].pulsar(); 
                         if (matriz[f][c].minasAlrededor==0){
                         matriz[f][c].revelarAlrededor(f,c);
@@ -105,8 +110,6 @@ public class Casilla extends JButton //extends Observable
          
      
     private class Controlador implements MouseListener{
- 
-    	int contadorBanderas = 0;
     	
         public void mouseClicked(MouseEvent e) {//Si no ha sido pulsadaIzq
             if (e.getButton()== MouseEvent.BUTTON1 && Casilla.this.esPulsableIzq == true )
@@ -119,16 +122,18 @@ public class Casilla extends JButton //extends Observable
             if (e.getButton() == MouseEvent.BUTTON3 && Casilla.this.esPulsableDer == true)
             { 	//Cada vez que pulso derecho, hacer cambios en el contador(suma o resta)
    
-            	System.out.println(contadorBanderas);
+ 
             	
                 if(Casilla.this.getIcon()== null){
                  
 	                Casilla.this.setIcon(bandera);
 	                Casilla.this.esPulsableIzq = false;
 	                Casilla.this.banderaPuesta = true;
-	                contadorBanderas--;
-	                cc.setCounter(contadorBanderas);
-	                this.update(cc, cm);
+	                //
+	              // Juego.getInstance(0).numMinas;
+	               //.setText(String.valueOf(bombas+1));//... incremento las bombas
+	               // VentanaMinas.getcontadorMinas().setText(String.valueOf(counter+1));
+
 	
                 }
                  
@@ -137,18 +142,15 @@ public class Casilla extends JButton //extends Observable
                     Casilla.this.setIcon(null);
                     Casilla.this.esPulsableIzq = true;
                     Casilla.this.banderaPuesta = false;
-                    contadorBanderas++;
-	                cc.setCounter(contadorBanderas);
-	                this.update(cc, cm);
+                    //
+                   // miVista.getlBombas().setText(String.valueOf(bombas-1))
+                   // VentanaMinas.getcontadorMinas().setText(String.valueOf(counter-1));
                 }
                
             } 
          ControladorJuego.ganarPartida(Juego.getInstance(0).getCasillas(), Juego.getInstance(0) );}
  
-        private void update(ControladorContador cc, ContadorMinas cm) {
-        	System.out.println(contadorBanderas);
-			
-		}
+
 
 		public void mousePressed(MouseEvent e) {
             // TODO Auto-generated method stub

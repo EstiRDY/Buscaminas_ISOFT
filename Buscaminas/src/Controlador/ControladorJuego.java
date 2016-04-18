@@ -29,7 +29,7 @@ public class ControladorJuego implements MouseListener { //y observer!
 	    int casillasTotales = juego.filas*juego.columnas;
 	    for (int f = 0; f < juego.filas; f++){
 	        for (int c = 0; c < juego.columnas; c++){
-	            if (casillas[f][c].descubierta == true){
+	            if (casillas[f][c].esPulsableIzq == false){
 	                casillasTotales--;}}}
 	    if (casillasTotales == juego.numMinas)
 	        {System.out.println("BIEEEEEEEEEEEEEEEEEEEEEN");
@@ -46,10 +46,10 @@ public class ControladorJuego implements MouseListener { //y observer!
 	{	
 		for(int i=0;i<Juego.filas;i++){
 		    for(int j=0;j<Juego.columnas;j++){ 	    	
-		    	if(casillas[i][j].estaMinada==true&&casillas[i][j].descubierta==false)
+		    	if(casillas[i][j].estaMinada==true&&casillas[i][j].esPulsableIzq==true)
 		    	{
-		    		casillas[i][j].descubierta=true;
-		    		casillas[i][j].pulsar();
+		    		casillas[i][j].esPulsableIzq=false;
+		    		casillas[i][j].revelarMina();
 		    	}
 //Este cambio es importante y está bien
 		    	casillas[i][j].esPulsableIzq=false;
@@ -57,9 +57,8 @@ public class ControladorJuego implements MouseListener { //y observer!
 		    }
 		   }
 
-		System.out.println("game over :(");  //ESTO LO HACE MUCHAS VECES!
-		// PartidaPerdida mal = new PartidaPerdida();
-		// mal.setVisible(true);
+		PartidaPerdida mal = new PartidaPerdida();
+		mal.setVisible(true);
 	}
 	
 	

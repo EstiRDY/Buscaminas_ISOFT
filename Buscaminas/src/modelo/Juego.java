@@ -1,5 +1,6 @@
 package modelo;
 import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -7,9 +8,10 @@ import Controlador.Casilla;
 import Controlador.ControladorContador;
 import Controlador.ControladorJuego;
 import Vista.ContadorMinas;
+import Vista.VentanaAcceso;
 
 
-public class Juego
+public class Juego implements Observer
 
 {	
 	
@@ -21,6 +23,8 @@ public class Juego
 	private Casilla[][]casillas;
 	public Casilla casillaActual;
 	private ControladorJuego ctrl;
+	public String nombreJugador;
+
 
 
 
@@ -41,7 +45,9 @@ public class Juego
 	this.nivel = pNivel; 
 	this.filas = pFilas; 
 	this.columnas = pColumnas; 
-	this.numMinas = pMinas;
+	this.numMinas = pMinas; 
+	this.nombreJugador = VentanaAcceso.getNombre().getText();
+	System.out.println(nombreJugador);
 	
 }
 	public static Juego getInstance(int pNivel){
@@ -121,6 +127,11 @@ public void contarAlrededor(Casilla casillas[][])
 		return ctrl;
 		
 	}
+	public void update(Observable o, Object arg) {
+	//	System.out.println(Casilla.counter);
+		
+	}
+	
 
 	
 	}
