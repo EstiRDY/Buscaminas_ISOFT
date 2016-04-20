@@ -1,12 +1,16 @@
 package Vista;
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import Controlador.ControladorTimer;
 import modelo.Juego;
 import java.awt.GridLayout;
 import java.awt.Insets;
@@ -28,11 +32,12 @@ public class VentanaMinas extends JFrame implements Observer {
 	private JPanel menusuperior;
 	private JButton buttonSmiley;
 	private static JLabel contadorMinas;
+	private static JLabel temporizador;
 	
 	private static Juego juego;
 	private static int nivel;
 	
-    
+    private static ControladorTimer controlador =  ControladorTimer.getControladorTimer();
     
     private static ImageIcon bandera = new ImageIcon("img/bandera.jpg");
 	private static ImageIcon mina = new ImageIcon("img/mina2.jpg");
@@ -88,19 +93,35 @@ public class VentanaMinas extends JFrame implements Observer {
 	private JPanel getPanel_1() {
 		if (menusuperior == null) {
 			menusuperior = new JPanel();
-			menusuperior.add(getButton());
+			
+			
 			
 			GridBagConstraints gbc_lblIntroduceTuNombre = new GridBagConstraints();
 			gbc_lblIntroduceTuNombre.insets = new Insets(0, 0, 5, 0);
 			gbc_lblIntroduceTuNombre.gridx = 1;
 			gbc_lblIntroduceTuNombre.gridy = 2;
+			
 			menusuperior.add(getcontadorMinas(), gbc_lblIntroduceTuNombre);
+			menusuperior.add(getButton());
+			menusuperior.add(getTemporizador(), gbc_lblIntroduceTuNombre);
+			
 		}
 		return menusuperior;
 	}
+	public static JLabel getTemporizador() {
+		if (temporizador == null) {
+			temporizador = new JLabel("Temporizador");
+
+		}
+		return temporizador;
+	}
+
+
+
 	public static JLabel getcontadorMinas() {
 		if (contadorMinas == null) {
 			contadorMinas = new JLabel("Minas");
+			contadorMinas.setText(String.valueOf(Juego.getInstance(0).numMinas));
 		}
 		return contadorMinas;
 	}
@@ -117,10 +138,12 @@ public class VentanaMinas extends JFrame implements Observer {
 				{	
 					if (e.getButton()== MouseEvent.BUTTON1)
 				{	
-						//Juego juegoNuevo = new Juego(1);
 						VentanaMinas nueva = new VentanaMinas(nivel);
-						//nueva.juego=juego.getInstance();
 						nueva.setVisible(true);
+						//
+						contadorMinas.setText(String.valueOf(Juego.getInstance(0).numMinas)); //si
+						//temporizador.setText(String.valueOf(... habria que parar el contador y poner a 0
+						
 						VentanaMinas.this.dispose();
 					}	
 				}
@@ -138,6 +161,8 @@ public class VentanaMinas extends JFrame implements Observer {
 	 this.juego=juego.getInstance(pNivel);
 	 this.juego.addControlador(); 
 	 initialize();
+	controlador.addObserver(this);
+	update(null,null);
 	}
 	
 	private void initialize() 
@@ -160,9 +185,8 @@ public class VentanaMinas extends JFrame implements Observer {
 		
 	}// fin initialize
 	
-public void update(Observable o, Object arg) {
-	 
-	
+public void update(Observable o, Object arg) {	 
+	getTemporizador().setText(String.valueOf(controlador.getContador()));
 }
 
 	

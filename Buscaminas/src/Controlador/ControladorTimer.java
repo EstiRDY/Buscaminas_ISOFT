@@ -4,24 +4,28 @@ import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+import Vista.VentanaMinas;
+
 /**
- * Esta clase representa el modulo que gestiona los semaforos.
- * Implementa los patrones Singleton y Observable
- * 
- * @author mikel <------------------------------------////////////////////////////////////
+ * Esta clase gestiona el cronometro de la partida y los eventos que pueden pararlo
+ * Implementa el patron Observable y el Singleton
  *
  */
-public class ControladorTimer  extends Observable{
+public class ControladorTimer extends Observable{
 	private static ControladorTimer  mControladorTimer = new ControladorTimer ();
-	private boolean eventoGanarOPerder; 
-	private static final int TIEMPOMAX = 15;
-	private int cont;
-	private Timer timer = null;
+
+	private static final int TIEMPOINICIAL = -1;
+	private static int segundos;
+	private static Timer timer = null;
+	static JLabel tiempo = VentanaMinas.getTemporizador();
 	
-	private ControladorTimer  ()
+	public ControladorTimer  ()
 	{
-		eventoGanarOPerder = false;
-		cont = TIEMPOMAX;
+
+		segundos = TIEMPOINICIAL;
 		TimerTask timerTask = new TimerTask() {
 			@Override
 			public void run() {
@@ -33,58 +37,50 @@ public class ControladorTimer  extends Observable{
 	}
 	
 	/**
-	 * getGestorSemaforos
-	 * Devuelve la instancia unica de la clase
-	 * @return el gestor de semaforos
+	 * getControladorTimer
+	 * Devuelve la instancia unica de la clase  
+	 * @return el controlador del cronometro
 	 */
-	public static ControladorTimer  getControladorTimer () {
+		public static ControladorTimer getControladorTimer () {
 		return mControladorTimer;
 	}
 	
 	/**
 	 * getContador
-	 * Devuelve cuantos segundos quedan para cambiar la luz del semaforo
+	 * Devuelve cuantos segundos llevamos de partida
 	 * @return
 	 */
 	public int getContador() {
-		return cont;
+		return segundos;
+	}
+
+	
+	/**
+	 * pausar
+	 * Si se ha ganado o perdido la partida, se para el cronometro y 
+	 * se guarda el tiempo si se ha ganado*/
+	 
+	public static void pausar() {
+
+				System.out.println(tiempo.getText()); //esto habra q guardar xa puntuaciones
+				
+				/*timer.cancel(); //NULLPOINTER
+				segundos = 0;
+				tiempo.setText(String.valueOf(segundos));*/
+
+
+
 	}
 	
 	/**
-	 * estaVerde
-	 * Devuelve true si el semaforo esta verda para los peatones y falso en caso contrario
-	 * @return
-	 */
-	public boolean hayEvento() {
-		return eventoGanarOPerder;
-	}
-	
-	/**
-	 * ponerVerde
-	 * Si el semafor esta rojo para los peatones, lo pone en verde
-	 */
-	public void pausar() {
-		if (!hayEvento()) {
-			cont = TIEMPOMAX;
-			eventoGanarOPerder = true;
-			// Notificar el cambio
-			setChanged();
-			notifyObservers();
-		}
-	}
-	
-	/**
-	 * Actualiza el contador del tiempo. Cuando llega a 0 cambia el color de la luz
+	 * Actualiza el contador del tiempo
 	 */
 	private void actualizarCont() {
-		cont--;
-		if (cont == 0) {
-			cont = TIEMPOMAX;
-			eventoGanarOPerder = !eventoGanarOPerder;
-		}
-		// Notifica el cambio en el estado
+		segundos++;
+		tiempo.setText(String.valueOf(segundos));
 		setChanged();
 		notifyObservers();
-		
+
+	
 	}
 }

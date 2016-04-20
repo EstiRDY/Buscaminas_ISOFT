@@ -27,6 +27,7 @@ public class Casilla extends JButton
     public int columna;
     public int fila;
     MouseEvent e;
+   
     
    ImageIcon bandera =  VentanaMinas.getBandera();
    ImageIcon mina = VentanaMinas.getMina();
@@ -129,10 +130,8 @@ public class Casilla extends JButton
 	                Casilla.this.setIcon(bandera);
 	                Casilla.this.esPulsableIzq = false;
 	                Casilla.this.banderaPuesta = true;
-	                //
-	              // Juego.getInstance(0).numMinas;
-	               //.setText(String.valueOf(bombas+1));//... incremento las bombas
-	               // VentanaMinas.getcontadorMinas().setText(String.valueOf(counter+1));
+	                Juego.getInstance(0).clickDerechos++;
+	                VentanaMinas.getcontadorMinas().setText(String.valueOf(Juego.getInstance(0).clickDerechos));
 
 	
                 }
@@ -142,9 +141,8 @@ public class Casilla extends JButton
                     Casilla.this.setIcon(null);
                     Casilla.this.esPulsableIzq = true;
                     Casilla.this.banderaPuesta = false;
-                    //
-                   // miVista.getlBombas().setText(String.valueOf(bombas-1))
-                   // VentanaMinas.getcontadorMinas().setText(String.valueOf(counter-1));
+                    Juego.getInstance(0).clickDerechos--;
+                    VentanaMinas.getcontadorMinas().setText(String.valueOf(Juego.getInstance(0).clickDerechos));
                 }
                
             } 

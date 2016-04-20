@@ -1,23 +1,23 @@
 package Controlador;
 
-import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Observable;
-import java.util.Observer;
-
 import Vista.PartidaGanada;
 import Vista.PartidaPerdida;
-import Vista.VentanaAcceso;
-import Vista.VentanaMinas;
 import modelo.Juego;
 
-public class ControladorJuego implements MouseListener { //y observer! 
+
+public class ControladorJuego  { 
 	
 	private Casilla[][]casillas;
 	private static Juego juego;
+	private static boolean evento = false;
 	
 	
+	public static boolean isEvento() {
+		return evento;
+	}
+
 	public ControladorJuego(Casilla[][] casillas)
 	{
 		this.juego = juego.getInstance(0);
@@ -32,13 +32,13 @@ public class ControladorJuego implements MouseListener { //y observer!
 	            if (casillas[f][c].esPulsableIzq == false){
 	                casillasTotales--;}}}
 	    if (casillasTotales == juego.numMinas)
-	        {System.out.println("BIEEEEEEEEEEEEEEEEEEEEEN");
+	        {
 			 PartidaGanada bien = new PartidaGanada();
 			 bien.setVisible(true);
-	        
-	    	return true;}
+	        ControladorTimer.pausar();
+	    	return evento = true;}
 	    else
-	        {return false;}
+	        {return evento = false;}
 	}
 	
 	
@@ -51,51 +51,16 @@ public class ControladorJuego implements MouseListener { //y observer!
 		    		casillas[i][j].esPulsableIzq=false;
 		    		casillas[i][j].revelarMina();
 		    	}
-//Este cambio es importante y está bien
+
 		    	casillas[i][j].esPulsableIzq=false;
 		    	casillas[i][j].esPulsableDer=false;
 		    }
 		   }
-
+		evento = true;
+		ControladorTimer.pausar();
 		PartidaPerdida mal = new PartidaPerdida();
 		mal.setVisible(true);
 	}
-	
-	
-	/*public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub	
-	}*/
 
-	public void mouseClicked(MouseEvent e) {
-		if (e.getButton()== MouseEvent.BUTTON1 )
-		{	ControladorJuego.this.ganarPartida(casillas,juego);
-		    ControladorJuego.this.finJuego(casillas);
-		    System.out.println("click");
-		}
-		
-	}
-
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	//Contador minas y contador banderas
-	//Timer = puntuacion
 
 }

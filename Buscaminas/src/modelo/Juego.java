@@ -21,9 +21,10 @@ public class Juego implements Observer
 	public static int columnas;
 	public static int numMinas;
 	private Casilla[][]casillas;
-	public Casilla casillaActual;
 	private ControladorJuego ctrl;
 	public String nombreJugador;
+	//
+	public int clickDerechos = 0;
 
 
 
