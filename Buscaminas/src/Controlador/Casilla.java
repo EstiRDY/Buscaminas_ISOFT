@@ -16,8 +16,6 @@ import modelo.Juego;
  
 public class Casilla extends JButton
 {
- 
-
     public boolean estaMinada = false;
     private Controlador controlador; 
     public int minasAlrededor;
@@ -126,14 +124,14 @@ public class Casilla extends JButton
  
             	
                 if(Casilla.this.getIcon()== null){
-                 
-	                Casilla.this.setIcon(bandera);
-	                Casilla.this.esPulsableIzq = false;
-	                Casilla.this.banderaPuesta = true;
-	                Juego.getInstance(0).clickDerechos++;
-	                VentanaMinas.getcontadorMinas().setText(String.valueOf(Juego.getInstance(0).clickDerechos));
-
-	
+               if (Juego.getInstance(0).clickDerechos > 0)    {     
+		           Casilla.this.setIcon(bandera);
+			 	   Casilla.this.esPulsableIzq = false;
+			 	   Casilla.this.banderaPuesta = true;
+		                	
+		 	       Juego.getInstance(0).clickDerechos--; //++
+		 	       VentanaMinas.getcontadorMinas().setText(String.valueOf(Juego.getInstance(0).clickDerechos));
+               }
                 }
                  
                 else
@@ -141,7 +139,8 @@ public class Casilla extends JButton
                     Casilla.this.setIcon(null);
                     Casilla.this.esPulsableIzq = true;
                     Casilla.this.banderaPuesta = false;
-                    Juego.getInstance(0).clickDerechos--;
+                    Juego.getInstance(0).clickDerechos++; //--
+         
                     VentanaMinas.getcontadorMinas().setText(String.valueOf(Juego.getInstance(0).clickDerechos));
                 }
                

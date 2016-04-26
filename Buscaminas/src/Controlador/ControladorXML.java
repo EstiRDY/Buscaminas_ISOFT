@@ -26,7 +26,7 @@ public class ControladorXML {
 	
 	
 	/** 
-	 *  Carga un fichero XML.  
+	 *  Carga un fichero XML: el que contiene las puntuaciones anteriores  
 	 */
 	private Document cargarFichero(String rutaRanking) throws JDOMException, IOException
 	{

@@ -9,6 +9,7 @@ import Controlador.ControladorContador;
 import Controlador.ControladorJuego;
 import Vista.ContadorMinas;
 import Vista.VentanaAcceso;
+import Vista.VentanaMinas;
 
 
 public class Juego implements Observer
@@ -89,7 +90,8 @@ public void ponerMinas(int pMinas, Casilla[][]casillas) {
     	if(casillas[valorFila][valorColumna].estaMinada == false)
     	{
     		casillas[valorFila][valorColumna].estaMinada = true;
-	        //casillas[valorFila][valorColumna].setIcon(mina);
+    		/////////////////////
+	      // casillas[valorFila][valorColumna].setIcon(VentanaMinas.getMina());
 
     		pMinas--;
     	}

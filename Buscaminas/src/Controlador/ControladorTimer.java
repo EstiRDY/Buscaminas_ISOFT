@@ -19,8 +19,9 @@ public class ControladorTimer extends Observable{
 
 	private static final int TIEMPOINICIAL = -1;
 	private static int segundos;
-	private static Timer timer = null;
+	private static Timer timer;
 	static JLabel tiempo = VentanaMinas.getTemporizador();
+	private static boolean freeze =  false;
 	
 	public ControladorTimer  ()
 	{
@@ -29,8 +30,10 @@ public class ControladorTimer extends Observable{
 		TimerTask timerTask = new TimerTask() {
 			@Override
 			public void run() {
-				actualizarCont();
-			}		
+				if (freeze == false){
+				actualizarCont();}
+			}
+			
 		};
 		timer = new Timer();
 		timer.scheduleAtFixedRate(timerTask, 0, 1000);
@@ -53,7 +56,14 @@ public class ControladorTimer extends Observable{
 	public int getContador() {
 		return segundos;
 	}
-
+	public void setFreeze (boolean cong)
+	{
+		this.freeze = cong;
+	}
+	
+	public void setContador(int seg) {
+		this.segundos = seg;
+	}
 	
 	/**
 	 * pausar
@@ -61,12 +71,13 @@ public class ControladorTimer extends Observable{
 	 * se guarda el tiempo si se ha ganado*/
 	 
 	public static void pausar() {
-
-				System.out.println(tiempo.getText()); //esto habra q guardar xa puntuaciones
+		
+				freeze = true;
+				System.out.println(tiempo.getText());
+				//timer.cancel();  //pausa pero no reinicia
+				tiempo.setText(String.valueOf(segundos));
+		
 				
-				/*timer.cancel(); //NULLPOINTER
-				segundos = 0;
-				tiempo.setText(String.valueOf(segundos));*/
 
 
 

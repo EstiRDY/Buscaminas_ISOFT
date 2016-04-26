@@ -1,8 +1,9 @@
-package Vista;
+package Controlador;
 
 import java.util.Observable;
 import java.util.Observer;
 import Controlador.ControladorContador;
+import Vista.VentanaMinas;
 import modelo.Juego;
 
 public class ContadorMinas implements Observer {

@@ -20,6 +20,8 @@ import javax.swing.JButton;
 import java.awt.event.MouseEvent;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 
@@ -67,6 +69,7 @@ public class VentanaMinas extends JFrame implements Observer {
 				try {
 					VentanaMinas frame = new VentanaMinas(nivel);
 					frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -83,6 +86,7 @@ public class VentanaMinas extends JFrame implements Observer {
 		if (panelminas == null)
 		{
 			panelminas = new JPanel();
+			//ESTO HAY QUE ARREGLAAAARLO!!
 			panelminas.setLayout(new GridLayout(juego.filas, juego.columnas, 0, 0));
 		}
 		return panelminas;
@@ -122,6 +126,7 @@ public class VentanaMinas extends JFrame implements Observer {
 		if (contadorMinas == null) {
 			contadorMinas = new JLabel("Minas");
 			contadorMinas.setText(String.valueOf(Juego.getInstance(0).numMinas));
+			Juego.getInstance(0).clickDerechos=Juego.getInstance(0).numMinas;
 		}
 		return contadorMinas;
 	}
@@ -131,6 +136,7 @@ public class VentanaMinas extends JFrame implements Observer {
 	{
 		if (buttonSmiley == null) {
 			buttonSmiley = new JButton("");
+			//buttonSmiley.setBounds(10, 150, 50, 50);
 			buttonSmiley.addMouseListener(new MouseAdapter() 
 			{
 				@Override
@@ -140,11 +146,16 @@ public class VentanaMinas extends JFrame implements Observer {
 				{	
 						VentanaMinas nueva = new VentanaMinas(nivel);
 						nueva.setVisible(true);
-						//
-						contadorMinas.setText(String.valueOf(Juego.getInstance(0).numMinas)); //si
-						//temporizador.setText(String.valueOf(... habria que parar el contador y poner a 0
-						
 						VentanaMinas.this.dispose();
+						//
+						contadorMinas.setText(String.valueOf(Juego.getInstance(0).numMinas));
+						Juego.getInstance(0).clickDerechos=Juego.getInstance(0).numMinas;
+						//temporizador se pone a 0:
+						ControladorTimer.getControladorTimer().setFreeze(false);
+						ControladorTimer.getControladorTimer().setContador(-1);
+						
+						
+						
 					}	
 				}
 			});
