@@ -22,6 +22,7 @@ public class Casilla extends JButton
     public boolean esPulsableIzq = true;
     public boolean esPulsableDer = true;
     public boolean banderaPuesta = false;
+    public boolean descubierta = false;
     public int columna;
     public int fila;
     MouseEvent e;
@@ -54,6 +55,7 @@ public class Casilla extends JButton
         if(this.getIcon()!= bandera && this.estaMinada == false)
              
         {
+        	this.descubierta=true;
             if (minasAlrededor > 0) {
                     setText(String.valueOf(minasAlrededor));    
              } 

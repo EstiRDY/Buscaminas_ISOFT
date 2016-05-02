@@ -29,7 +29,7 @@ public class ControladorJuego  {
 	    int casillasTotales = juego.filas*juego.columnas;
 	    for (int f = 0; f < juego.filas; f++){
 	        for (int c = 0; c < juego.columnas; c++){
-	            if (casillas[f][c].esPulsableIzq == false){ //fallo aqui
+	            if (casillas[f][c].descubierta==true){ //fallo aqui
 	                casillasTotales--;}}}
 	    
 	    if (casillasTotales == juego.numMinas)
