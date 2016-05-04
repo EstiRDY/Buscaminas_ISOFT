@@ -1,18 +1,13 @@
 package modelo;
-import java.util.Observable;
-import java.util.Observer;
 
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import Controlador.Casilla;
-import Controlador.ControladorContador;
 import Controlador.ControladorJuego;
-import Vista.ContadorMinas;
 import Vista.VentanaAcceso;
 import Vista.VentanaMinas;
 
 
-public class Juego implements Observer
+public class Juego
 
 {	
 	
@@ -91,7 +86,7 @@ public void ponerMinas(int pMinas, Casilla[][]casillas) {
     	{
     		casillas[valorFila][valorColumna].estaMinada = true;
     		/////////////////////
-	      // casillas[valorFila][valorColumna].setIcon(VentanaMinas.getMina());
+	      casillas[valorFila][valorColumna].setIcon(VentanaMinas.getMina());
 
     		pMinas--;
     	}
@@ -120,23 +115,16 @@ public void contarAlrededor(Casilla casillas[][])
 		return this.casillas;
 	}
 	
-	public ControladorJuego addControlador() {
+	public ControladorJuego addControlador(VentanaMinas ventanaMinas) {
 		if (ctrl == null)
 		{
-			ctrl = new ControladorJuego(casillas);
+			ctrl = new ControladorJuego(casillas,ventanaMinas);
 		}
 		System.out.println("controlador añadido");
 		System.out.println(ctrl);
 		return ctrl;
 		
-	}
-	public void update(Observable o, Object arg) {
-	//	System.out.println(Casilla.counter);
-		
-	}
-	
-
-	
+	}	
 	}
 
 

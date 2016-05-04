@@ -5,7 +5,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 
 import Vista.VentanaMinas;
 

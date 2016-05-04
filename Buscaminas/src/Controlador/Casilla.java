@@ -5,9 +5,6 @@ import java.awt.event.MouseListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JPanel;
-
-import Vista.ContadorMinas;
 import Vista.VentanaMinas;
 import modelo.Juego;
  

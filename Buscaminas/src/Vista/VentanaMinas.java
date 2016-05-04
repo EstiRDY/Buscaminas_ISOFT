@@ -1,13 +1,11 @@
 package Vista;
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import Controlador.ControladorTimer;
@@ -20,8 +18,6 @@ import javax.swing.JButton;
 import java.awt.event.MouseEvent;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 
@@ -170,7 +166,7 @@ public class VentanaMinas extends JFrame implements Observer {
 	{
 	 this.nivel=pNivel;
 	 this.juego=juego.getInstance(pNivel);
-	 this.juego.addControlador(); 
+	 this.juego.addControlador(VentanaMinas.this); 
 	 initialize();
 	controlador.addObserver(this);
 	update(null,null);
@@ -190,7 +186,6 @@ public class VentanaMinas extends JFrame implements Observer {
 		contentPane.add(getPanelminas(), BorderLayout.CENTER);
 		setContentPane(contentPane);
 		contentPane.add(getPanel_1(), BorderLayout.NORTH);
-		
 		juego.hacerMatriz(panelminas);
 		
 		
@@ -199,7 +194,5 @@ public class VentanaMinas extends JFrame implements Observer {
 public void update(Observable o, Object arg) {	 
 	getTemporizador().setText(String.valueOf(controlador.getContador()));
 }
-
-	
 	
 	}

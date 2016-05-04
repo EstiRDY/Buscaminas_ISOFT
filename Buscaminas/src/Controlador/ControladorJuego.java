@@ -1,9 +1,8 @@
 package Controlador;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import Vista.PartidaGanada;
 import Vista.PartidaPerdida;
+import Vista.VentanaMinas;
 import modelo.Juego;
 
 
@@ -12,16 +11,18 @@ public class ControladorJuego  {
 	private Casilla[][]casillas;
 	private static Juego juego;
 	private static boolean evento = false;
+	private static VentanaMinas vm;
 	
 	
 	public static boolean isEvento() {
 		return evento;
 	}
 
-	public ControladorJuego(Casilla[][] casillas)
+	public ControladorJuego(Casilla[][] casillas, VentanaMinas ventanaMinas)
 	{
 		this.juego = juego.getInstance(0);
 		this.casillas = casillas;
+		this.vm=ventanaMinas;
 	}
 
 	public static boolean ganarPartida(Casilla[][]casillas, Juego juego) {
@@ -29,12 +30,12 @@ public class ControladorJuego  {
 	    int casillasTotales = juego.filas*juego.columnas;
 	    for (int f = 0; f < juego.filas; f++){
 	        for (int c = 0; c < juego.columnas; c++){
-	            if (casillas[f][c].descubierta==true){ //fallo aqui
+	            if (casillas[f][c].descubierta==true){
 	                casillasTotales--;}}}
 	    
 	    if (casillasTotales == juego.numMinas)
 	        {
-			 PartidaGanada bien = new PartidaGanada();
+			 PartidaGanada bien = new PartidaGanada(vm);
 			 bien.setVisible(true);
 			ControladorTimer.pausar();
 	    	return evento = true;}

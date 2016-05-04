@@ -17,13 +17,14 @@ import javax.swing.JLabel;
 public class PartidaGanada extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
+	private static VentanaMinas vm;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		try {
-			PartidaGanada dialog = new PartidaGanada();
+			PartidaGanada dialog = new PartidaGanada(vm);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -33,8 +34,9 @@ public class PartidaGanada extends JDialog {
 
 	/**
 	 * Create the dialog.
+	 * @param vm 
 	 */
-	public PartidaGanada() {
+	public PartidaGanada(VentanaMinas vm) {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setLayout(new FlowLayout());
@@ -53,6 +55,7 @@ public class PartidaGanada extends JDialog {
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
+				this.vm=vm;
 				
 				okButton.addMouseListener(new MouseAdapter() 
 				{
@@ -60,10 +63,11 @@ public class PartidaGanada extends JDialog {
 					public void mouseClicked(MouseEvent e) 
 					{	
 						if (e.getButton()== MouseEvent.BUTTON1)
-					{					
+					{		
+							PartidaGanada.vm.dispose();
 							VentanaMinas nueva = new VentanaMinas(Juego.nivel);					
 							nueva.setVisible(true);
-
+							PartidaGanada.this.dispose();
 						}	
 					}
 				});

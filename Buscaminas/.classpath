@@ -16,10 +16,10 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Esti/Downloads/jdom/jdom-2.0.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Esti/Downloads/jdom/jdom-2.0.6-contrib.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Esti/Downloads/jdom/jdom-2.0.6-javadoc.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Esti/Downloads/jdom/jdom-2.0.6-junit.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Esti/Downloads/jdom/jdom-2.0.6-sources.jar"/>
+	<classpathentry kind="lib" path="C:/ADRIAN/universidad/Curso 2015-2016/Cuatrimestre 2/Ingeniería del Software/Practica/jdom/jdom-2.0.6.jar"/>
+	<classpathentry kind="lib" path="C:/ADRIAN/universidad/Curso 2015-2016/Cuatrimestre 2/Ingeniería del Software/Practica/jdom/jdom-2.0.6-contrib.jar"/>
+	<classpathentry kind="lib" path="C:/ADRIAN/universidad/Curso 2015-2016/Cuatrimestre 2/Ingeniería del Software/Practica/jdom/jdom-2.0.6-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/ADRIAN/universidad/Curso 2015-2016/Cuatrimestre 2/Ingeniería del Software/Practica/jdom/jdom-2.0.6-junit.jar"/>
+	<classpathentry kind="lib" path="C:/ADRIAN/universidad/Curso 2015-2016/Cuatrimestre 2/Ingeniería del Software/Practica/jdom/jdom-2.0.6-sources.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
