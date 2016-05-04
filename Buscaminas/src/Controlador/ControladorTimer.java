@@ -21,6 +21,7 @@ public class ControladorTimer extends Observable{
 	private static Timer timer;
 	static JLabel tiempo = VentanaMinas.getTemporizador();
 	private static boolean freeze =  false;
+	private static int tiempoFinal ;
 	
 	public ControladorTimer  ()
 	{
@@ -55,6 +56,7 @@ public class ControladorTimer extends Observable{
 	public int getContador() {
 		return segundos;
 	}
+	public int getTiempoFinal(){return tiempoFinal;}
 	public void setFreeze (boolean cong)
 	{
 		this.freeze = cong;
@@ -75,6 +77,7 @@ public class ControladorTimer extends Observable{
 				System.out.println(tiempo.getText());
 				//timer.cancel();  //pausa pero no reinicia
 				tiempo.setText(String.valueOf(segundos));
+				tiempoFinal = segundos;
 		
 				
 

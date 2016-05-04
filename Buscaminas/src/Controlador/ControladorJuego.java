@@ -3,6 +3,7 @@ package Controlador;
 import Vista.PartidaGanada;
 import Vista.PartidaPerdida;
 import Vista.VentanaMinas;
+import modelo.Ganador;
 import modelo.Juego;
 
 
@@ -38,6 +39,7 @@ public class ControladorJuego  {
 			 PartidaGanada bien = new PartidaGanada(vm);
 			 bien.setVisible(true);
 			ControladorTimer.pausar();
+			Ganador actual = new Ganador();
 	    	return evento = true;}
 	    else
 	        {return evento = false;}
