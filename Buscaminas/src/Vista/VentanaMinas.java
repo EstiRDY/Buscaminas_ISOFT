@@ -1,5 +1,6 @@
 package Vista;
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
@@ -32,6 +33,8 @@ public class VentanaMinas extends JFrame implements Observer {
 	private JButton buttonSmiley;
 	private static JLabel contadorMinas;
 	private static JLabel temporizador;
+	private static JLabel iconoMinas;
+	private static JLabel iconoTiempo;
 	
 	private static Juego juego;
 	private static int nivel;
@@ -40,22 +43,15 @@ public class VentanaMinas extends JFrame implements Observer {
     
     private static ImageIcon bandera = new ImageIcon("img/bandera.jpg");
 	private static ImageIcon mina = new ImageIcon("img/mina2.jpg");
+    private static ImageIcon timer = new ImageIcon("img/timer.jpg");
+	private static ImageIcon smiley = new ImageIcon("img/smiley.jpg");
+	 private static ImageIcon bum = new ImageIcon("img/bum.jpg");
     
-    public static ImageIcon getBandera() {
-		return bandera;
-	}
+    public static ImageIcon getBandera() {return bandera;}
+	public static ImageIcon getMina() {return mina;}
+	public static int getNivel() {return nivel;}
 
 
-    
-	public static ImageIcon getMina() {
-		return mina;
-	}
-
-	public static int getNivel() {
-		return nivel;
-	}
-
-	private ImageIcon smiley = new ImageIcon("img/smiley.jpg");
 	
 	/**
 	 * Launch the application.
@@ -102,17 +98,22 @@ public class VentanaMinas extends JFrame implements Observer {
 			gbc_lblIntroduceTuNombre.gridx = 1;
 			gbc_lblIntroduceTuNombre.gridy = 2;
 			
+			menusuperior.add(getIconoMinas());
 			menusuperior.add(getcontadorMinas(), gbc_lblIntroduceTuNombre);
 			menusuperior.add(getButton());
 			menusuperior.add(getTemporizador(), gbc_lblIntroduceTuNombre);
+			menusuperior.add(getIconoTiempo());
+			
+			
 			
 		}
 		return menusuperior;
 	}
+
 	public static JLabel getTemporizador() {
 		if (temporizador == null) {
-			temporizador = new JLabel("Temporizador");
-
+			//temporizador = new JLabel(timer);
+			temporizador = new JLabel("Temporizador");			
 		}
 		return temporizador;
 	}
@@ -127,6 +128,12 @@ public class VentanaMinas extends JFrame implements Observer {
 		}
 		return contadorMinas;
 	}
+	public static JLabel getIconoTiempo(){
+		if(iconoTiempo ==null){iconoTiempo = new JLabel(timer);}return iconoTiempo;}
+	
+	public static JLabel getIconoMinas(){
+		if(iconoMinas ==null){iconoMinas = new JLabel(bum);}return iconoMinas;}
+	
 	
 	//BOTÓN SMILEY REINICIO
 	private JButton getButton() 
