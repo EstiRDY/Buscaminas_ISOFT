@@ -1,5 +1,6 @@
 package Vista;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 
@@ -24,7 +25,7 @@ import java.awt.event.MouseAdapter;
 
 public class VentanaMinas extends JFrame implements Observer {
 
-	
+	private Dimension screensize;
 	private JPanel contentPane;
 	private JPanel panelminas;
 	private JPanel menusuperior;
@@ -187,6 +188,8 @@ public class VentanaMinas extends JFrame implements Observer {
 		setContentPane(contentPane);
 		contentPane.add(getPanel_1(), BorderLayout.NORTH);
 		juego.hacerMatriz(panelminas);
+		screensize = getToolkit().getScreenSize();
+		setLocation((screensize.width-getWidth())/2,(screensize.height-getHeight())/2);
 		
 		
 	}// fin initialize

@@ -37,6 +37,7 @@ public class PartidaGanada extends JDialog {
 	 * @param vm 
 	 */
 	public PartidaGanada(VentanaMinas vm) {
+	
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setLayout(new FlowLayout());
@@ -79,5 +80,6 @@ public class PartidaGanada extends JDialog {
 			}
 		}
 	}
+
 
 }

@@ -1,5 +1,6 @@
 package Vista;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -19,6 +20,7 @@ import javax.swing.ButtonGroup;
 
 public class VentanaAcceso extends JFrame {
 
+	private Dimension screensize;
 	private JPanel contentPane;
 	private JPanel panel;
 	private JLabel lblIntroduceTuNombre;
@@ -61,6 +63,8 @@ public class VentanaAcceso extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		contentPane.add(getPanel(), BorderLayout.SOUTH);
+		screensize = getToolkit().getScreenSize();
+		setLocation((screensize.width-getWidth())/2,(screensize.height-getHeight())/2);
 	}
 
 	private JPanel getPanel() {
