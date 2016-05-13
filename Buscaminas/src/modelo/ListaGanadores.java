@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-
-
 public class ListaGanadores {
 	
 	private List<Ganador> listaRanking;
@@ -17,8 +15,8 @@ public class ListaGanadores {
 		return listaRanking.iterator();
 	}
 	
-	public void add(Ganador ganador) {
-		listaRanking.add(ganador);
+	public void add(String pNombre, int pPuntuacion) {
+		listaRanking.add(new Ganador(pNombre, pPuntuacion));
 		
 	}
 

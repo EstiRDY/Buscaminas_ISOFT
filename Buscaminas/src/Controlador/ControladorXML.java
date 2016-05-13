@@ -26,7 +26,7 @@ import modelo.ListaGanadores;
 public class ControladorXML {
 	
 	private static ControladorXML mControladorXML = new ControladorXML();
-	private String RUTA_RANKING = "Buscaminas/ranking.xml";
+	private String RUTA_RANKING = "ranking.xml";
 	
 	private ControladorXML(){}
 	
@@ -70,10 +70,10 @@ public class ControladorXML {
 			List<Element> listaRanking = documentoXML.getRootElement().getChildren();
 			int index=0;
 			boolean listaModificada = false;
-			//si la puntuacion es mayor a la minima de la lista
+		
 			if ( pPuntuacion > Integer.valueOf( (listaRanking.get(listaRanking.size()-1).getChild("puntuacion").getText()) ) )
 			{
-				//recorro la lista y busco la posicion en donde debo insertar al jugador
+				
 			
 				Iterator<Element> it = listaRanking.iterator();
 				
@@ -113,15 +113,15 @@ public class ControladorXML {
 	public ListaGanadores cargarRanking() throws JDOMException, IOException
 	{
 		Document docRanking = cargarFichero(RUTA_RANKING);
-		List<Element> listaTuplasRanking= docRanking.getRootElement().getChildren(); //obtengo la lista de elementos
+		List<Element> listaTuplasRanking = docRanking.getRootElement().getChildren(); //obtengo la lista de elementos
 		ListaGanadores listaPos = new ListaGanadores(); //creo la lista
 		
 		//para cada objeto de la listaTuplaRanking...
 		for ( Object listado :  listaTuplasRanking)
 		{
 			Element tupla = (Element) listado; //convierto el objeto a tipo Element			
-			//listaPos.add(((Object) tupla).getObject());
-					     
+			listaPos.add(tupla.getChildText("nombre"), 
+				     Integer.parseInt(tupla.getChildText("puntuacion")));
 		}
 		
 		return listaPos; //con la lista cargada en memoria, devuelvo la lista

@@ -5,8 +5,12 @@ import Controlador.ControladorTimer;
 public class Ganador {
 	private String nombre;
 	private int segundos;
-public Ganador(){
-	this.nombre = Juego.getInstance(0).nombreJugador;
-	this.segundos = ControladorTimer.getControladorTimer().getTiempoFinal();
-}
+public Ganador(String pNombre, int pPuntuacion){
+	
+	this.nombre = pNombre;
+	this.segundos = pPuntuacion;
+	}
+
+public String getNombre(){return nombre;}
+public int getSegundos(){return segundos;}
 }

@@ -44,7 +44,6 @@ public class Juego
 	this.columnas = pColumnas; 
 	this.numMinas = pMinas; 
 	this.nombreJugador = VentanaAcceso.getNombre().getText();
-	System.out.println(nombreJugador);
 	
 }
 	public static Juego getInstance(int pNivel){
@@ -120,8 +119,8 @@ public void contarAlrededor(Casilla casillas[][])
 		{
 			ctrl = new ControladorJuego(casillas,ventanaMinas);
 		}
-		System.out.println("controlador añadido");
-		System.out.println(ctrl);
+		//System.out.println("controlador añadido");
+		//System.out.println(ctrl);
 		return ctrl;
 		
 	}	

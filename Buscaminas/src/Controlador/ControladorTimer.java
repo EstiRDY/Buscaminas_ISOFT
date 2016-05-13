@@ -74,7 +74,6 @@ public class ControladorTimer extends Observable{
 	public static void pausar() {
 		
 				freeze = true;
-				System.out.println(tiempo.getText());
 				//timer.cancel();  //pausa pero no reinicia
 				tiempo.setText(String.valueOf(segundos));
 				tiempoFinal = segundos;
