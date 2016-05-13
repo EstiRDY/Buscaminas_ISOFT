@@ -47,6 +47,7 @@ public class ControladorJuego  {
 			ControladorXML mGestorFicherosXML = ControladorXML.getControladorXML();
 			try {
 				mGestorFicherosXML.actualizarRanking(actual.getNombre(),actual.getSegundos());
+
 			} catch (JDOMException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -70,18 +70,16 @@ public class ControladorXML {
 			List<Element> listaRanking = documentoXML.getRootElement().getChildren();
 			int index=0;
 			boolean listaModificada = false;
-		
-			if ( pPuntuacion > Integer.valueOf( (listaRanking.get(listaRanking.size()-1).getChild("puntuacion").getText()) ) )
-			{
-				
-			
+			//No entra en el IF con ">"
+			if ( pPuntuacion < Integer.valueOf( (listaRanking.get(listaRanking.size()-1).getChild("puntuacion").getText()) ) )
+			{	
 				Iterator<Element> it = listaRanking.iterator();
 				
 				while (it.hasNext() && !listaModificada)
 				{
 					Element jugadorEnLaLista = it.next();
 					
-					if (pPuntuacion > Integer.valueOf(jugadorEnLaLista.getChild("puntuacion").getText()))
+					if (pPuntuacion < Integer.valueOf(jugadorEnLaLista.getChild("puntuacion").getText()))
 					{
 						Element nuevoElemento = new Element("top");
 						nuevoElemento.addContent(new Element("nombre").setText(pUsuario));
@@ -90,13 +88,16 @@ public class ControladorXML {
 						listaRanking.add(index, nuevoElemento);
 						
 						listaRanking.remove(listaRanking.size()-1); 
-						//el Ranking es de 10 jugadores, si meto uno nuevo, la lista es de 11... y debo borrar el ultimo de la lista
+						//el Ranking es de 10 jugadores, si meto uno nuevo, la lista es de 11...
+						//y debo borrar el ultimo de la lista
 						listaModificada = true;
 					}
 					index++;
-					
+		
 				}
 				guardarFichero(documentoXML, RUTA_RANKING);
+				System.out.println(pUsuario);
+				System.out.println(pPuntuacion);
 				
 			}	
 		} 	
