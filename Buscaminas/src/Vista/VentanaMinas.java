@@ -155,6 +155,7 @@ public class VentanaMinas extends JFrame implements Observer {
 						contadorMinas.setText(String.valueOf(Juego.getInstance(0).numMinas));
 						Juego.getInstance(0).clickDerechos=Juego.getInstance(0).numMinas;
 						//temporizador se pone a 0:
+						
 						ControladorTimer.getControladorTimer().setFreeze(false);
 						ControladorTimer.getControladorTimer().setContador(-1);
 						

@@ -43,8 +43,8 @@ public class PartidaGanada extends JDialog {
 		contentPanel.setLayout(new FlowLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		{
-			JLabel lblHasGanadoLa = new JLabel("Has ganado la partida! BIEEEEEEEEEEEEEEEEEEEN!");
+		{	String texto = "<html><body>¡Enhorabuena! ¡Has ganado la partida! <br> Pulsa OK para ver el ranking <br> y al cerrarlo podrás volver a jugar :-) </body></html>";
+			JLabel lblHasGanadoLa = new JLabel(texto);
 			contentPanel.add(lblHasGanadoLa);
 		}
 		{
@@ -68,6 +68,10 @@ public class PartidaGanada extends JDialog {
 							PartidaGanada.vm.dispose();
 							VentanaMinas nueva = new VentanaMinas(Juego.nivel);					
 							nueva.setVisible(true);
+							//
+							VentanaRanking rank = new VentanaRanking();					
+							rank.setVisible(true);
+							//
 							PartidaGanada.this.dispose();
 						}	
 					}
