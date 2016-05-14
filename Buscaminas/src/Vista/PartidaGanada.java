@@ -69,8 +69,6 @@ public class PartidaGanada extends JDialog {
 							PartidaGanada.vm.dispose();
 							VentanaMinas nueva = new VentanaMinas(Juego.nivel);					
 							nueva.setVisible(true);
-							ControladorTimer.getControladorTimer().setFreeze(false);
-							ControladorTimer.getControladorTimer().setContador(-1);
 							//
 							VentanaRanking rank = new VentanaRanking();					
 							rank.setVisible(true);

@@ -9,6 +9,10 @@
     <puntuacion>4</puntuacion>
   </top>
   <top>
+    <nombre>desconocido</nombre>
+    <puntuacion>4</puntuacion>
+  </top>
+  <top>
     <nombre>tutututut</nombre>
     <puntuacion>6</puntuacion>
   </top>
@@ -35,9 +39,5 @@
   <top>
     <nombre>desconocido</nombre>
     <puntuacion>7</puntuacion>
-  </top>
-  <top>
-    <nombre>dv</nombre>
-    <puntuacion>8</puntuacion>
   </top>
 </ranking>

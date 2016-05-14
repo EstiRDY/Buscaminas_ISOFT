@@ -10,9 +10,17 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import Controlador.ControladorTimer;
 import Controlador.ControladorXML;
 import modelo.Ganador;
 import modelo.ListaGanadores;
+import javax.swing.JButton;
+import java.awt.BorderLayout;
+import javax.swing.SwingConstants;
+import java.awt.Component;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class VentanaRanking extends JFrame{
 
@@ -30,11 +38,23 @@ public class VentanaRanking extends JFrame{
 	
 		Toolkit tk = Toolkit.getDefaultToolkit();
 	    Dimension tamano = tk.getScreenSize();
-		frame = new JFrame("Ranking Sudoku");
+		frame = new JFrame("Ranking Buscaminas");
 		panelRanking = new JPanel();
 		panelRanking.setLayout(new GridLayout(11, 2,0,0));
 		panelRanking.setBorder(BorderFactory.createEmptyBorder(0, 15, 0, 0));
 		setTitle("Ranking Top 10");
+		
+		JButton btnCerrarRanking = new JButton("Cerrar Ranking");
+		btnCerrarRanking.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ControladorTimer.getControladorTimer().setFreeze(false);
+				ControladorTimer.getControladorTimer().setContador(-1);
+				VentanaRanking.this.dispose();
+			}
+		});
+		btnCerrarRanking.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnCerrarRanking.setHorizontalTextPosition(SwingConstants.CENTER);
+		getContentPane().add(btnCerrarRanking, BorderLayout.SOUTH);
 		JLabel cabeceraNombre = new JLabel("Nombre"), cabeceraPuntuacion = new JLabel("Segundos");	
 		panelRanking.add(cabeceraNombre,0);
 		panelRanking.add(cabeceraPuntuacion,1);
@@ -55,7 +75,7 @@ public class VentanaRanking extends JFrame{
 			
 		} catch (Exception e) {}
 		finally{
-			add(panelRanking);
+			getContentPane().add(panelRanking);
 			setSize(250,400);
 			setBounds(tamano.width/2-getWidth()/2, tamano.height/2-getHeight()/2, 250, 400);
 			    
