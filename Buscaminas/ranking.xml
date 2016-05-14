@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ranking>
   <top>
+    <nombre>desconocido</nombre>
+    <puntuacion>4</puntuacion>
+  </top>
+  <top>
+    <nombre>desconocido</nombre>
+    <puntuacion>4</puntuacion>
+  </top>
+  <top>
     <nombre>tutututut</nombre>
+    <puntuacion>6</puntuacion>
+  </top>
+  <top>
+    <nombre>desconocido</nombre>
     <puntuacion>6</puntuacion>
   </top>
   <top>
@@ -27,17 +39,5 @@
   <top>
     <nombre>dv</nombre>
     <puntuacion>8</puntuacion>
-  </top>
-  <top>
-    <nombre>desconocido</nombre>
-    <puntuacion>8</puntuacion>
-  </top>
-  <top>
-    <nombre>desconocido</nombre>
-    <puntuacion>9</puntuacion>
-  </top>
-  <top>
-    <nombre>desconocido</nombre>
-    <puntuacion>9</puntuacion>
   </top>
 </ranking>

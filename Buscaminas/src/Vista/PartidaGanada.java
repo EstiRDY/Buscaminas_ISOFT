@@ -10,6 +10,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Controlador.ControladorTimer;
 import modelo.Juego;
 
 import javax.swing.JLabel;
@@ -68,6 +69,8 @@ public class PartidaGanada extends JDialog {
 							PartidaGanada.vm.dispose();
 							VentanaMinas nueva = new VentanaMinas(Juego.nivel);					
 							nueva.setVisible(true);
+							ControladorTimer.getControladorTimer().setFreeze(false);
+							ControladorTimer.getControladorTimer().setContador(-1);
 							//
 							VentanaRanking rank = new VentanaRanking();					
 							rank.setVisible(true);
