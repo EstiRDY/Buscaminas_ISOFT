@@ -44,7 +44,7 @@ public class VentanaRanking extends JFrame{
 		panelRanking.setBorder(BorderFactory.createEmptyBorder(0, 15, 0, 0));
 		setTitle("Ranking Top 10");
 		
-		JButton btnCerrarRanking = new JButton("Cerrar Ranking");
+		JButton btnCerrarRanking = new JButton("Volver a jugar");
 		btnCerrarRanking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ControladorTimer.getControladorTimer().setFreeze(false);

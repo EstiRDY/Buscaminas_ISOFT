@@ -77,10 +77,6 @@ public class ControladorTimer extends Observable{
 				//timer.cancel();  //pausa pero no reinicia
 				tiempo.setText(String.valueOf(segundos));
 				tiempoFinal = segundos;
-		
-				
-
-
 
 	}
 	

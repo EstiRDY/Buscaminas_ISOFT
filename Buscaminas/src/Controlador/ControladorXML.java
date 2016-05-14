@@ -96,9 +96,6 @@ public class ControladorXML {
 					i++;	
 				}
 				guardarFichero(documentoXML, RUTA_RANKING);
-				System.out.println(pUsuario);
-				System.out.println(pPuntuacion);
-				
 			}	
 		} 	
 	

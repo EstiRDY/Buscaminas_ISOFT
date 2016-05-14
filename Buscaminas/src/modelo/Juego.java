@@ -84,8 +84,8 @@ public void ponerMinas(int pMinas, Casilla[][]casillas) {
     	if(casillas[valorFila][valorColumna].estaMinada == false)
     	{
     		casillas[valorFila][valorColumna].estaMinada = true;
-    		/////////////////////
-	      casillas[valorFila][valorColumna].setIcon(VentanaMinas.getMina());
+////// La siguiente línea se usa para revelar las minas desde el principio: es trampa! //////
+	      //casillas[valorFila][valorColumna].setIcon(VentanaMinas.getMina());
 
     		pMinas--;
     	}

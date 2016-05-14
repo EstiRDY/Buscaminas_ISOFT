@@ -27,9 +27,6 @@ public class Casilla extends JButton
     
    ImageIcon bandera =  VentanaMinas.getBandera();
    ImageIcon mina = VentanaMinas.getMina();
- 
-	
-	
 
     public Casilla(String text, Icon icon) {
         super();

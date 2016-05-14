@@ -79,7 +79,6 @@ public class VentanaMinas extends JFrame implements Observer {
 		if (panelminas == null)
 		{
 			panelminas = new JPanel();
-			//ESTO HAY QUE ARREGLAAAARLO!!
 			panelminas.setLayout(new GridLayout(juego.filas, juego.columnas, 0, 0));
 		}
 		return panelminas;

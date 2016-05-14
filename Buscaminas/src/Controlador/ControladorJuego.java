@@ -27,9 +27,9 @@ public class ControladorJuego  {
 	{
 		this.juego = juego.getInstance(0);
 		this.casillas = casillas;
-		this.vm=ventanaMinas;
+		this.vm = ventanaMinas;
 	}
-
+	
 	public static boolean ganarPartida(Casilla[][]casillas, Juego juego) {
 
 	    int casillasTotales = juego.filas*juego.columnas;
